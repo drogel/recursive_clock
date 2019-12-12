@@ -5,8 +5,8 @@ import 'package:recursive_clock/hand/hand_decoration.dart';
 
 class RecursiveHand extends Hand {
   const RecursiveHand({
-    @required double size,
     @required double angleRadians,
+    double size = 1,
     this.decoration = const HandDecoration(),
     this.scaleAlignment = Alignment.topCenter,
     this.child,
