@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-const double _kTopPadding = 54;
-const double _kWidth = 12;
+const double _kTopPadding = 12;
+const double _kWidth = 36;
 
-class PointerBar extends StatelessWidget {
-  const PointerBar({
+class PointerIndicator extends StatelessWidget {
+  const PointerIndicator({
     this.topPadding = _kTopPadding,
     this.width = _kWidth,
   });
@@ -20,9 +20,9 @@ class PointerBar extends StatelessWidget {
             alignment: Alignment.topCenter,
             child: Container(
               width: width,
-              height: (constraints.maxHeight - topPadding) / 2,
+              height: width,
               decoration: BoxDecoration(
-                color: Colors.black,
+                color: Colors.pinkAccent,
                 borderRadius: BorderRadius.circular(width / 2),
               ),
             ),

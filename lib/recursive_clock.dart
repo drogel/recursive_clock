@@ -8,15 +8,15 @@ class RecursiveClock extends StatelessWidget {
         size: 0.9,
         angleRadians: 2.270795,
         scaleAlignment: Alignment.center,
-        decoration: HandDecoration(color: Colors.blue[300]),
+        decoration: HandDecoration(color: Colors.blue[800]),
         child: RecursiveHand(
           size: 0.5,
           angleRadians: 2.270795,
-          decoration: HandDecoration(color: Colors.blue[200]),
+          decoration: HandDecoration(color: Colors.blue[400]),
           child: RecursiveHand(
             size: 0.5,
             angleRadians: 2.270795,
-            decoration: HandDecoration(color: Colors.blue[100]),
+            decoration: HandDecoration(color: Colors.blue[200]),
           ),
         ),
       );

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recursive_clock/hand/hand_decoration.dart';
-import 'package:recursive_clock/hand/pointer_bar.dart';
+import 'package:recursive_clock/hand/pointer_indicator.dart';
 
 class CirclePointer extends StatelessWidget {
   const CirclePointer({
@@ -18,7 +18,7 @@ class CirclePointer extends StatelessWidget {
         alignment: Alignment.center,
         children: <Widget>[
           _buildCircle(),
-          PointerBar(),
+          PointerIndicator(),
           if (child != null) child
         ],
       );
