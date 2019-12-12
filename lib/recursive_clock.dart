@@ -13,6 +13,7 @@ class _RecursiveClockState extends State<RecursiveClock> {
       RecursiveHand(
         size: 0.9,
         angleRadians: 0,
+        scaleAlignment: Alignment.center,
         decoration: HandDecoration(
           color: Colors.blue[100],
         ),

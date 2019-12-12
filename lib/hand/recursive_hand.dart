@@ -8,6 +8,7 @@ class RecursiveHand extends Hand {
     @required double size,
     @required double angleRadians,
     this.decoration = const HandDecoration(),
+    this.scaleAlignment = Alignment.topCenter,
     this.child,
   }) : super(
           size: size,
@@ -16,6 +17,7 @@ class RecursiveHand extends Hand {
 
   final HandDecoration decoration;
   final Widget child;
+  final Alignment scaleAlignment;
 
   @override
   Widget build(BuildContext context) => Center(
@@ -24,8 +26,8 @@ class RecursiveHand extends Hand {
           child: SizedBox.expand(
             child: Transform.rotate(
               angle: angleRadians,
-              alignment: Alignment.center,
               child: Transform.scale(
+                alignment: scaleAlignment,
                 scale: size,
                 child: CirclePointer(
                   decoration: decoration,
