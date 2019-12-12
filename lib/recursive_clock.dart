@@ -2,30 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:recursive_clock/hand/recursive_hand.dart';
 import 'package:recursive_clock/hand/hand_decoration.dart';
 
-class RecursiveClock extends StatefulWidget {
+class RecursiveClock extends StatelessWidget {
   @override
-  _RecursiveClockState createState() => _RecursiveClockState();
-}
-
-class _RecursiveClockState extends State<RecursiveClock> {
-  @override
-  Widget build(BuildContext context) =>
-      RecursiveHand(
+  Widget build(BuildContext context) => RecursiveHand(
         size: 0.9,
-        angleRadians: 0,
+        angleRadians: 2.270795,
         scaleAlignment: Alignment.center,
-        decoration: HandDecoration(
-          color: Colors.blue[100],
-        ),
+        decoration: HandDecoration(color: Colors.blue[300]),
         child: RecursiveHand(
           size: 0.5,
-          angleRadians: 2,
+          angleRadians: 2.270795,
+          decoration: HandDecoration(color: Colors.blue[200]),
           child: RecursiveHand(
             size: 0.5,
-            angleRadians: 4,
-            decoration: HandDecoration(
-              color: Colors.blue[100],
-            ),
+            angleRadians: 2.270795,
+            decoration: HandDecoration(color: Colors.blue[100]),
           ),
         ),
       );

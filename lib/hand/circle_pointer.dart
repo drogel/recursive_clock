@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:recursive_clock/hand/hand_decoration.dart';
 
+const double _kPointerTopPadding = 54;
+const double _kPointerWidth = 12;
+
 class CirclePointer extends StatelessWidget {
   const CirclePointer({
     @required this.decoration,
@@ -18,13 +21,19 @@ class CirclePointer extends StatelessWidget {
             Container(
               color: decoration.color,
             ),
-            LayoutBuilder(
-              builder: (_, constraints) => Align(
-                alignment: Alignment.topCenter,
-                child: Container(
-                  width: 2,
-                  height: constraints.maxHeight/2,
-                  color: Colors.black,
+            Padding(
+              padding: const EdgeInsets.only(top: _kPointerTopPadding),
+              child: LayoutBuilder(
+                builder: (_, constraints) => Align(
+                  alignment: Alignment.topCenter,
+                  child: Container(
+                    width: _kPointerWidth,
+                    height: (constraints.maxHeight - _kPointerTopPadding) / 2,
+                    decoration: BoxDecoration(
+                      color: Colors.black,
+                      borderRadius: BorderRadius.circular(_kPointerWidth / 2),
+                    ),
+                  ),
                 ),
               ),
             ),
