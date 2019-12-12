@@ -19,10 +19,10 @@ class _RecursiveClockState extends State<RecursiveClock> {
         ),
         child: RecursiveHand(
           size: 0.5,
-          angleRadians: 0,
+          angleRadians: 2,
           child: RecursiveHand(
             size: 0.5,
-            angleRadians: 0,
+            angleRadians: 4,
             decoration: HandDecoration(
               color: Colors.blue[100],
             ),
