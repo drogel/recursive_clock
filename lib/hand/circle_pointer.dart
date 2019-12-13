@@ -4,7 +4,7 @@ import 'package:recursive_clock/hand/indicator.dart';
 
 /// A widget that draws a circle and an [Indicator] for a clock hand.
 ///
-/// This widget stacks a circularly clipped [Container] and an [Indicator].
+/// This widget stacks a circular [Container] and an [Indicator].
 class CirclePointer extends StatelessWidget {
   /// Creates an immutable [CirclePointer].
   ///
@@ -17,8 +17,16 @@ class CirclePointer extends StatelessWidget {
   /// [CirclePointer] components.
   final HandDecoration decoration;
 
-  /// Builds the [CirclePointer]'s circle by clipping a [Container] widget.
-  Widget _buildCircle() => ClipOval(child: Container(color: decoration.color));
+  /// Builds the [CirclePointer]'s circle body using a [Container] widget.
+  Widget _buildCircle() => LayoutBuilder(
+        builder: (_, constraints) => Container(
+          decoration: BoxDecoration(
+            color: decoration.color,
+            borderRadius: BorderRadius.circular(constraints.maxHeight / 2),
+            boxShadow: decoration.shadows,
+          ),
+        ),
+      );
 
   @override
   Widget build(BuildContext context) => Stack(

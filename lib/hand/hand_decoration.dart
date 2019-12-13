@@ -8,6 +8,7 @@ class HandDecoration {
   const HandDecoration({
     this.color = Colors.white,
     this.indicatorColor = Colors.black,
+    this.shadows,
   })  : assert(color != null),
         assert(indicatorColor != null);
 
@@ -16,4 +17,8 @@ class HandDecoration {
 
   /// The color of the clock hand's indicator.
   final Color indicatorColor;
+
+  /// The list of [BoxShadow] objects that will describe how the hand's body
+  /// should cast shadows.
+  final List<BoxShadow> shadows;
 }

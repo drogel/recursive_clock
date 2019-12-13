@@ -37,13 +37,13 @@ class _RecursiveClockState extends State<RecursiveClock> {
             size: _kChildHandSize,
             angleRadians: _state.minuteRadians,
             decoration: HandDecoration(
-              color: Colors.blue[400].withAlpha(100),
+              color: Colors.blue[400],
             ),
             child: RecursiveHand(
               size: _kChildHandSize,
               angleRadians: _state.secondRadians,
               decoration: HandDecoration(
-                color: Colors.blue[200].withAlpha(100),
+                color: Colors.blue[200],
               ),
             ),
           ),
