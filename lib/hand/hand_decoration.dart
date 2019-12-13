@@ -9,6 +9,7 @@ class HandDecoration {
     this.color = Colors.white,
     this.indicatorColor = Colors.black,
     this.shadows,
+    this.indicatorShadows,
   })  : assert(color != null),
         assert(indicatorColor != null);
 
@@ -21,4 +22,8 @@ class HandDecoration {
   /// The list of [BoxShadow] objects that will describe how the hand's body
   /// should cast shadows.
   final List<BoxShadow> shadows;
+
+  /// The list of [BoxShadow] objects that will describe how the hand's
+  /// indicator should cast shadows.
+  final List<BoxShadow> indicatorShadows;
 }

@@ -32,7 +32,10 @@ class CirclePointer extends StatelessWidget {
   Widget build(BuildContext context) => Stack(
         children: <Widget>[
           _buildCircle(),
-          Indicator(color: decoration.indicatorColor),
+          Indicator(
+            color: decoration.indicatorColor,
+            shadows: decoration.indicatorShadows,
+          ),
         ],
       );
 }

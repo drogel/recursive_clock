@@ -19,6 +19,7 @@ class Indicator extends StatelessWidget {
     this.color = Colors.black,
     this.topPadding = _kTopPadding,
     this.size = _kSize,
+    this.shadows,
   })  : assert(color != null),
         assert(topPadding != null),
         assert(size != null);
@@ -32,6 +33,9 @@ class Indicator extends StatelessWidget {
   /// The [Indicator]'s body color.
   final Color color;
 
+  /// The [Indicator]'s list of shadows casted.
+  final List<BoxShadow> shadows;
+
   @override
   Widget build(BuildContext context) => Padding(
         padding: EdgeInsets.only(top: topPadding),
@@ -42,6 +46,7 @@ class Indicator extends StatelessWidget {
             height: size,
             decoration: BoxDecoration(
               color: color,
+              boxShadow: shadows,
               borderRadius: BorderRadius.circular(size / 2),
             ),
           ),
