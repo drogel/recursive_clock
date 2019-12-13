@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recursive_clock/hand/ring_shadow.dart';
 
 const double _kStrokeWidth = 1;
 
@@ -6,11 +7,13 @@ class Ring extends StatelessWidget {
   const Ring({
     this.color = Colors.black,
     this.strokeWidth = _kStrokeWidth,
+    this.ringShadows,
   })  : assert(color != null),
         assert(strokeWidth != null);
 
   final Color color;
   final double strokeWidth;
+  final List<RingShadow> ringShadows;
 
   @override
   Widget build(BuildContext context) => LayoutBuilder(
@@ -19,6 +22,7 @@ class Ring extends StatelessWidget {
             radius: (constraints.maxHeight - strokeWidth) / 2,
             color: color,
             strokeWidth: strokeWidth,
+            shadows: ringShadows,
           ),
         ),
       );
@@ -29,6 +33,7 @@ class _RingPainter extends CustomPainter {
     @required this.radius,
     this.color = Colors.black,
     this.strokeWidth = _kStrokeWidth,
+    this.shadows,
   })  : assert(color != null),
         assert(radius != null),
         assert(strokeWidth != null);
@@ -36,26 +41,22 @@ class _RingPainter extends CustomPainter {
   final Color color;
   final double strokeWidth;
   final double radius;
+  final List<RingShadow> shadows;
 
   @override
   void paint(Canvas canvas, Size size) {
-    final paint = Paint()
+    final ringPaint = Paint()
       ..style = PaintingStyle.stroke
       ..color = color
       ..strokeWidth = strokeWidth;
 
-    final shadow = Paint()
-      ..color = color.withOpacity(0.33)
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = strokeWidth
-      ..maskFilter = MaskFilter.blur(BlurStyle.normal, convertRadiusToSigma(15));
+    if (shadows != null) {
+      for (final shadow in shadows) {
+        canvas.drawCircle(shadow.offset, radius, shadow.toPaint());
+      }
+    }
 
-    canvas.drawCircle(Offset(10, 10), radius, shadow);
-    canvas.drawCircle(Offset.zero, radius, paint);
-  }
-
-  static double convertRadiusToSigma(double radius) {
-    return radius * 0.57735 + 0.5;
+    canvas.drawCircle(Offset.zero, radius, ringPaint);
   }
 
   // TODO(drogel): review the shouldRepaint method

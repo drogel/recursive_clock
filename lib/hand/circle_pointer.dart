@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:recursive_clock/hand/hand_decoration.dart';
 import 'package:recursive_clock/hand/indicator.dart';
 import 'package:recursive_clock/hand/ring.dart';
+import 'package:recursive_clock/hand/ring_shadow.dart';
 
 /// A widget that draws a circle and an [Indicator] for a clock hand.
 ///
