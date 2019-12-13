@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 const double _kTopPadding = 12;
 
 /// Indicator's size default value.
-const double _kSize = 36;
+const double _kSize = 24;
 
 /// A widget that indicates the clock number whose parent hand is pointing to.
 ///

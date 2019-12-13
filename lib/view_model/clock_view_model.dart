@@ -7,10 +7,6 @@ final radiansPerTick = radians(360 / 60);
 final radiansPerHour = radians(360 / 12);
 
 class ClockViewModel {
-  ClockViewModel() {
-    _updateTime();
-  }
-
   final StreamController _stateController = StreamController<ClockState>();
   DateTime _now = DateTime.now();
   Timer _timer;
@@ -36,6 +32,8 @@ class ClockViewModel {
     );
     _stateController.sink.add(_convertToClockState(_now));
   }
+
+  void init() => _updateTime();
 
   Stream<ClockState> get stateStream => _stateController.stream;
 
