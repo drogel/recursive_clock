@@ -16,7 +16,7 @@ class Ring extends StatelessWidget {
   Widget build(BuildContext context) => LayoutBuilder(
         builder: (_, constraints) => CustomPaint(
           painter: _RingPainter(
-            radius: (constraints.maxHeight - strokeWidth)/2,
+            radius: (constraints.maxHeight - strokeWidth) / 2,
             color: color,
             strokeWidth: strokeWidth,
           ),
@@ -39,11 +39,23 @@ class _RingPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    var paint = Paint()
+    final paint = Paint()
       ..style = PaintingStyle.stroke
       ..color = color
       ..strokeWidth = strokeWidth;
+
+    final shadow = Paint()
+      ..color = color.withOpacity(0.33)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = strokeWidth
+      ..maskFilter = MaskFilter.blur(BlurStyle.normal, convertRadiusToSigma(15));
+
+    canvas.drawCircle(Offset(10, 10), radius, shadow);
     canvas.drawCircle(Offset.zero, radius, paint);
+  }
+
+  static double convertRadiusToSigma(double radius) {
+    return radius * 0.57735 + 0.5;
   }
 
   // TODO(drogel): review the shouldRepaint method

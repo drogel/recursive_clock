@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recursive_clock/hand/hand_decoration.dart';
 import 'package:recursive_clock/hand/indicator.dart';
+import 'package:recursive_clock/hand/ring.dart';
 
 /// A widget that draws a circle and an [Indicator] for a clock hand.
 ///
@@ -30,8 +31,12 @@ class CirclePointer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Stack(
+        alignment: Alignment.center,
         children: <Widget>[
-          _buildCircle(),
+          Ring(
+            strokeWidth: 40,
+            color: decoration.color,
+          ),
           Indicator(
             color: decoration.indicatorColor,
             shadows: decoration.indicatorShadows,
