@@ -11,8 +11,8 @@ class RecursiveClock extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Padding(
-    padding: const EdgeInsets.all(8.0),
-    child: StreamBuilder<ClockState>(
+        padding: const EdgeInsets.all(8.0),
+        child: StreamBuilder<ClockState>(
           initialData: _viewModel.initialData,
           stream: _viewModel.stateStream,
           builder: (context, snapshot) => RecursiveHand(
@@ -22,14 +22,18 @@ class RecursiveClock extends StatelessWidget {
             child: RecursiveHand(
               size: _kChildHandSize,
               angleRadians: snapshot.data.minuteRadians,
-              decoration: HandDecoration(color: Colors.blue[400]),
+              decoration: HandDecoration(
+                color: Colors.blue[400].withAlpha(100),
+              ),
               child: RecursiveHand(
                 size: _kChildHandSize,
                 angleRadians: snapshot.data.secondRadians,
-                decoration: HandDecoration(color: Colors.blue[200]),
+                decoration: HandDecoration(
+                  color: Colors.blue[200].withAlpha(100),
+                ),
               ),
             ),
           ),
         ),
-  );
+      );
 }
