@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:recursive_clock/hand/circle_pointer.dart';
+import 'package:recursive_clock/hand/ring_pointer.dart';
 import 'package:recursive_clock/hand/hand.dart';
 import 'package:recursive_clock/hand/hand_decoration.dart';
+import 'package:recursive_clock/recursive_clock.dart';
 
 /// A widget that draws a clock [Hand] that can have another child [Hand] in it.
 ///
@@ -21,7 +22,7 @@ class RecursiveHand extends Hand {
         );
 
   /// A [HandDecoration] object that contains style parameters for the
-  /// [CirclePointer] child in the widget tree.
+  /// [RingPointer] child in the widget tree.
   final HandDecoration decoration;
 
   /// Controls the placement of the hand's [Transform.scale] transform.
@@ -31,9 +32,8 @@ class RecursiveHand extends Hand {
   /// so that the hand's angle is measured from the 12 o'clock position.
   final Alignment scaleAlignment;
 
-
   /// A child [Hand] widget that can be stacked to this clock hand to build the
-  /// recursive clock.
+  /// [RecursiveClock].
   final Hand child;
 
   @override
@@ -48,7 +48,10 @@ class RecursiveHand extends Hand {
                 scale: size,
                 child: Stack(
                   children: <Widget>[
-                    CirclePointer(decoration: decoration),
+                    RingPointer(
+                      strokeWidth: 40,
+                      decoration: decoration,
+                    ),
                     if (child != null) child
                   ],
                 ),
