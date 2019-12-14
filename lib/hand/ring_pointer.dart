@@ -11,7 +11,9 @@ class RingPointer extends StatelessWidget {
   const RingPointer({
     @required this.decoration,
     @required this.strokeWidth,
+    this.hasIndicator = false,
   })  : assert(decoration != null),
+        assert(hasIndicator != null),
         assert(strokeWidth != null);
 
   /// A [HandDecoration] that will pass its style values to the corresponding
@@ -21,19 +23,24 @@ class RingPointer extends StatelessWidget {
   /// The width of the stroke of the [Ring].
   final double strokeWidth;
 
+  /// Controls if this [RingPointer] should draw an [Indicator].
+  final bool hasIndicator;
+
   @override
   Widget build(BuildContext context) => Stack(
-        alignment: Alignment.center,
         children: <Widget>[
-          Ring(
-            strokeWidth: strokeWidth,
-            color: decoration.color,
-            ringShadows: decoration.ringShadows,
+          Center(
+            child: Ring(
+              strokeWidth: strokeWidth,
+              color: decoration.color,
+              ringShadows: decoration.ringShadows,
+            ),
           ),
-          Indicator(
-            color: decoration.indicatorColor,
-            shadows: decoration.indicatorShadows,
-          ),
+          if (hasIndicator)
+            Indicator(
+              color: decoration.indicatorColor,
+              shadows: decoration.indicatorShadows,
+            ),
         ],
       );
 }

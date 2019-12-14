@@ -11,12 +11,15 @@ import 'package:recursive_clock/recursive_clock.dart';
 /// rotate and resize the clock hand.
 class RecursiveHand extends Hand {
   const RecursiveHand({
-    @required double angleRadians,
+    @required this.strokeWidth,
+    double angleRadians = 0,
     double size = 1,
     this.decoration = const HandDecoration(),
     this.scaleAlignment = Alignment.topCenter,
+    this.hasIndicator = false,
     this.child,
-  }) : super(
+  })  : assert(strokeWidth != null),
+        super(
           size: size,
           angleRadians: angleRadians,
         );
@@ -36,25 +39,30 @@ class RecursiveHand extends Hand {
   /// [RecursiveClock].
   final Hand child;
 
+  /// The width of the stroke of the [Ring] in [RingPointer].
+  final double strokeWidth;
+
+  /// Controls if the [RingPointer] should draw an [Indicator].
+  final bool hasIndicator;
+
   @override
   Widget build(BuildContext context) => Center(
         child: AspectRatio(
           aspectRatio: 1,
-          child: SizedBox.expand(
-            child: Transform.rotate(
-              angle: angleRadians,
-              child: Transform.scale(
-                alignment: scaleAlignment,
-                scale: size,
-                child: Stack(
-                  children: <Widget>[
-                    RingPointer(
-                      strokeWidth: 40,
-                      decoration: decoration,
-                    ),
-                    if (child != null) child
-                  ],
-                ),
+          child: Transform.rotate(
+            angle: angleRadians,
+            child: Transform.scale(
+              alignment: scaleAlignment,
+              scale: size,
+              child: Stack(
+                children: <Widget>[
+                  RingPointer(
+                    strokeWidth: strokeWidth,
+                    decoration: decoration,
+                    hasIndicator: hasIndicator,
+                  ),
+                  if (child != null) child
+                ],
               ),
             ),
           ),
