@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:recursive_clock/hand/recursive_hand.dart';
 import 'package:recursive_clock/hand/hand_decoration.dart';
@@ -40,7 +42,7 @@ class _RecursiveClockState extends State<RecursiveClock> {
                 strokeWidth: _kStrokeWidth,
                 color: Colors.blue[900].withOpacity(0.3),
                 blurRadius: 5,
-                offset: Offset(20, 20),
+                offset: Offset(0, 20),
               ),
             ],
           ),
@@ -55,7 +57,7 @@ class _RecursiveClockState extends State<RecursiveClock> {
                   strokeWidth: _kStrokeWidth,
                   color: Colors.blue[600].withOpacity(0.3),
                   blurRadius: 5,
-                  offset: Offset(20, 20),
+                  offset: Offset(20*sin(_state.hourRadians), 20*cos(_state.hourRadians)),
                 )
               ],
             ),
@@ -70,7 +72,7 @@ class _RecursiveClockState extends State<RecursiveClock> {
                     strokeWidth: _kStrokeWidth,
                     color: Colors.blue[300].withOpacity(0.3),
                     blurRadius: 5,
-                    offset: Offset(20, 20),
+                    offset: Offset(20*sin(_state.minuteRadians+_state.hourRadians), 20*cos(_state.minuteRadians+_state.hourRadians)),
                   )
                 ],
               ),
@@ -85,7 +87,7 @@ class _RecursiveClockState extends State<RecursiveClock> {
                       strokeWidth: _kStrokeWidth,
                       color: Colors.blue[100].withOpacity(0.3),
                       blurRadius: 5,
-                      offset: Offset(20, 20),
+                      offset: Offset(20*sin(_state.secondRadians+_state.hourRadians+_state.minuteRadians), 20*cos(_state.secondRadians+_state.hourRadians+_state.minuteRadians)),
                     ),
                   ],
                 ),
