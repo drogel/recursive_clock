@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:recursive_clock/hand/recursive_hand.dart';
 import 'package:recursive_clock/hand/hand_decoration.dart';
@@ -8,7 +6,8 @@ import 'package:recursive_clock/view_model/clock_state.dart';
 import 'package:recursive_clock/view_model/clock_view_model.dart';
 
 const double _kChildHandSize = 0.61803398875;
-const double _kStrokeWidth = 46;
+const double _kStrokeWidth = 40;
+const Offset _kRingShadowsOffset = Offset(0, 25);
 
 class RecursiveClock extends StatefulWidget {
   @override
@@ -16,7 +15,7 @@ class RecursiveClock extends StatefulWidget {
 }
 
 class _RecursiveClockState extends State<RecursiveClock> {
-  final _viewModel = ClockViewModel();
+  final _viewModel = ClockViewModel(desiredShadowsOffset: _kRingShadowsOffset);
   ClockState _state;
 
   @override
@@ -32,17 +31,17 @@ class _RecursiveClockState extends State<RecursiveClock> {
 
   @override
   Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(30.0),
         child: RecursiveHand(
           strokeWidth: _kStrokeWidth,
           decoration: HandDecoration(
-            color: Colors.blue[900].withOpacity(0.9),
+            color: Color.fromRGBO(66, 133, 244, 0.9),
             ringShadows: [
               RingShadow(
                 strokeWidth: _kStrokeWidth,
-                color: Colors.blue[900].withOpacity(0.3),
+                color: Color.fromRGBO(66, 133, 244, 0.2),
                 blurRadius: 5,
-                offset: Offset(0, 20),
+                offset: _kRingShadowsOffset,
               ),
             ],
           ),
@@ -51,13 +50,13 @@ class _RecursiveClockState extends State<RecursiveClock> {
             size: _kChildHandSize,
             angleRadians: _state.hourRadians,
             decoration: HandDecoration(
-              color: Colors.blue[600].withOpacity(0.9),
+              color: Color.fromRGBO(219, 68, 55, 0.9),
               ringShadows: [
                 RingShadow(
                   strokeWidth: _kStrokeWidth,
-                  color: Colors.blue[600].withOpacity(0.3),
+                  color: Color.fromRGBO(219, 68, 55, 0.2),
                   blurRadius: 5,
-                  offset: Offset(20*sin(_state.hourRadians), 20*cos(_state.hourRadians)),
+                  offset: _state.hourShadowOffset,
                 )
               ],
             ),
@@ -66,14 +65,14 @@ class _RecursiveClockState extends State<RecursiveClock> {
               size: _kChildHandSize,
               angleRadians: _state.minuteRadians,
               decoration: HandDecoration(
-                color: Colors.blue[300].withOpacity(0.9),
+                color: Color.fromRGBO(244, 180, 0, 0.9),
                 ringShadows: [
                   RingShadow(
                     strokeWidth: _kStrokeWidth,
-                    color: Colors.blue[300].withOpacity(0.3),
+                    color: Color.fromRGBO(244, 180, 0, 0.2),
                     blurRadius: 5,
-                    offset: Offset(20*sin(_state.minuteRadians+_state.hourRadians), 20*cos(_state.minuteRadians+_state.hourRadians)),
-                  )
+                    offset: _state.minuteShadowOffset,
+                  ),
                 ],
               ),
               child: RecursiveHand(
@@ -81,13 +80,13 @@ class _RecursiveClockState extends State<RecursiveClock> {
                 size: _kChildHandSize,
                 angleRadians: _state.secondRadians,
                 decoration: HandDecoration(
-                  color: Colors.blue[100].withOpacity(0.9),
+                  color: Color.fromRGBO(15, 157, 88, 0.9),
                   ringShadows: [
                     RingShadow(
                       strokeWidth: _kStrokeWidth,
-                      color: Colors.blue[100].withOpacity(0.3),
+                      color: Color.fromRGBO(15, 157, 88, 0.2),
                       blurRadius: 5,
-                      offset: Offset(20*sin(_state.secondRadians+_state.hourRadians+_state.minuteRadians), 20*cos(_state.secondRadians+_state.hourRadians+_state.minuteRadians)),
+                      offset: _state.secondShadowOffset,
                     ),
                   ],
                 ),
