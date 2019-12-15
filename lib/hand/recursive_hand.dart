@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:recursive_clock/hand/ring_pointer.dart';
 import 'package:recursive_clock/hand/hand.dart';
@@ -18,11 +20,12 @@ class RecursiveHand extends Hand {
     this.scaleAlignment = Alignment.topCenter,
     this.hasIndicator = false,
     this.child,
-  })  : assert(strokeWidth != null),
+  })
+      : assert(strokeWidth != null),
         super(
-          size: size,
-          angleRadians: angleRadians,
-        );
+        size: size,
+        angleRadians: angleRadians,
+      );
 
   /// A [HandDecoration] object that contains style parameters for the
   /// [RingPointer] child in the widget tree.
@@ -46,25 +49,41 @@ class RecursiveHand extends Hand {
   final bool hasIndicator;
 
   @override
-  Widget build(BuildContext context) => Center(
+  Widget build(BuildContext context) =>
+      Center(
         child: AspectRatio(
           aspectRatio: 1,
-          child: Transform.rotate(
-            angle: angleRadians,
-            child: Transform.scale(
-              alignment: scaleAlignment,
-              scale: size,
-              child: Stack(
-                children: <Widget>[
-                  RingPointer(
-                    strokeWidth: strokeWidth,
-                    decoration: decoration,
-                    hasIndicator: hasIndicator,
+          child: LayoutBuilder(
+            builder: (context, constraints) =>
+                AnimatedContainer(
+                  duration: Duration(milliseconds: 900),
+                  curve: Curves.fastOutSlowIn,
+                  transform: Matrix4.translationValues(
+                    constraints.maxHeight / 2,
+                    constraints.maxHeight / 2,
+                    0,
+                  ).multiplied(Matrix4.rotationZ(angleRadians)).multiplied(
+                    Matrix4.translationValues(
+                      -constraints.maxHeight / 2,
+                      -constraints.maxHeight / 2,
+                      0,
+                    ),
                   ),
-                  if (child != null) child
-                ],
-              ),
-            ),
+                  child: Transform.scale(
+                    scale: size,
+                    alignment: scaleAlignment,
+                    child: Stack(
+                      children: <Widget>[
+                        RingPointer(
+                          strokeWidth: strokeWidth,
+                          decoration: decoration,
+                          hasIndicator: hasIndicator,
+                        ),
+                        if (child != null) child
+                      ],
+                    ),
+                  ),
+                ),
           ),
         ),
       );
