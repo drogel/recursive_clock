@@ -6,8 +6,8 @@ import 'package:recursive_clock/view_model/clock_state.dart';
 import 'package:recursive_clock/view_model/clock_view_model.dart';
 
 const double _kChildHandSize = 0.61803398875;
-const double _kStrokeWidth = 40;
-const Offset _kRingShadowsOffset = Offset(0, 25);
+const double _kStrokeWidth = 42;
+const Offset _kRingShadowsOffset = Offset(25, 25);
 
 class RecursiveClock extends StatefulWidget {
   @override
@@ -40,7 +40,7 @@ class _RecursiveClockState extends State<RecursiveClock> {
               RingShadow(
                 strokeWidth: _kStrokeWidth,
                 color: Color.fromRGBO(66, 133, 244, 0.2),
-                blurRadius: 5,
+                blurRadius: 2,
                 offset: _kRingShadowsOffset,
               ),
             ],
@@ -55,7 +55,7 @@ class _RecursiveClockState extends State<RecursiveClock> {
                 RingShadow(
                   strokeWidth: _kStrokeWidth,
                   color: Color.fromRGBO(219, 68, 55, 0.2),
-                  blurRadius: 5,
+                  blurRadius: 4,
                   offset: _state.hourShadowOffset,
                 )
               ],
@@ -70,7 +70,7 @@ class _RecursiveClockState extends State<RecursiveClock> {
                   RingShadow(
                     strokeWidth: _kStrokeWidth,
                     color: Color.fromRGBO(244, 180, 0, 0.2),
-                    blurRadius: 5,
+                    blurRadius: 8,
                     offset: _state.minuteShadowOffset,
                   ),
                 ],
@@ -85,7 +85,7 @@ class _RecursiveClockState extends State<RecursiveClock> {
                     RingShadow(
                       strokeWidth: _kStrokeWidth,
                       color: Color.fromRGBO(15, 157, 88, 0.2),
-                      blurRadius: 5,
+                      blurRadius: 16,
                       offset: _state.secondShadowOffset,
                     ),
                   ],

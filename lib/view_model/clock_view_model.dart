@@ -6,8 +6,11 @@ import 'package:flutter/foundation.dart';
 import 'package:recursive_clock/view_model/clock_state.dart';
 import 'package:vector_math/vector_math_64.dart' show radians;
 
-final radiansPerTick = radians(360 / 60);
-final radiansPerHour = radians(360 / 12);
+const _kDebugTimeSpeedFactor = 1;
+
+final _radiansPerTick = _kDebugTimeSpeedFactor * radians(360 / 60);
+final _radiansPerMillisecond = _kDebugTimeSpeedFactor * radians(360 / 60000);
+final _radiansPerHour = _kDebugTimeSpeedFactor * radians(360 / 12);
 
 class ClockViewModel {
   ClockViewModel({
@@ -24,10 +27,15 @@ class ClockViewModel {
   Timer _timer;
 
   ClockState _convertToClockState(DateTime time) {
-    final hourRadians =
-        time.hour * radiansPerHour + (_now.minute / 60) * radiansPerHour;
-    final minuteRadians = time.minute * radiansPerTick;
-    final secondRadians = time.second * radiansPerTick;
+    final hourRadians = time.hour * _radiansPerHour +
+        (time.minute / 60) * _radiansPerHour +
+        (time.second / 3600) * _radiansPerHour +
+        (time.millisecond / 3600000) * _radiansPerHour;
+    final minuteRadians = time.minute * _radiansPerTick +
+        (time.second / 60) * _radiansPerTick +
+        (time.millisecond / 60000) * _radiansPerTick;
+    final secondRadians = time.millisecond * _radiansPerMillisecond +
+        time.second * _radiansPerTick;
 
     final recursiveHourRadians = hourRadians;
     final recursiveMinuteRadians = minuteRadians - hourRadians;
@@ -55,7 +63,7 @@ class ClockViewModel {
   void _updateTime() {
     _now = DateTime.now();
     _timer = Timer(
-      Duration(seconds: 1) - Duration(milliseconds: _now.millisecond),
+      Duration(milliseconds: 16),
       _updateTime,
     );
     _stateController.sink.add(_convertToClockState(_now));
