@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:recursive_clock/hand/ring_pointer.dart';
 import 'package:recursive_clock/hand/hand.dart';
