@@ -8,8 +8,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:recursive_clock/helper/customizer.dart';
 import 'package:recursive_clock/recursive_clock.dart';
-import 'package:recursive_clock/styles/color_data.dart';
-import 'package:recursive_clock/styles/light_colors.dart';
+import 'package:recursive_clock/styles/color_manager.dart';
 
 void main() {
   // A temporary measure until Platform supports web and TargetPlatform supports
@@ -21,9 +20,5 @@ void main() {
     debugDefaultTargetPlatformOverride = TargetPlatform.fuchsia;
   }
 
-  runApp(ClockCustomizer((_) => ColorData(
-        brightness: Brightness.light,
-        colors: const LightColors(),
-        child: RecursiveClock(),
-      )));
+  runApp(ClockCustomizer((_) => ColorManager(child: RecursiveClock())));
 }
