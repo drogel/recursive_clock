@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:recursive_clock/hand/ring_shadow.dart';
 
@@ -43,6 +45,12 @@ class _RingPainter extends CustomPainter {
   final double radius;
   final List<RingShadow> shadows;
 
+  Offset _shift({@required Offset offset, @required double byPixels}) =>
+      offset.translate(
+        byPixels * cos(offset.direction),
+        byPixels * sin(offset.direction),
+      );
+
   @override
   void paint(Canvas canvas, Size size) {
     final ringPaint = Paint()
@@ -52,14 +60,21 @@ class _RingPainter extends CustomPainter {
 
     if (shadows != null) {
       for (final shadow in shadows) {
-        canvas.drawCircle(shadow.offset, radius, shadow.toPaint());
+        canvas.drawCircle(
+          _shift(offset: shadow.offset, byPixels: shadow.spreadRadius),
+          radius + shadow.spreadRadius,
+          shadow.toPaint(),
+        );
       }
     }
 
     canvas.drawCircle(Offset.zero, radius, ringPaint);
   }
 
-  // TODO(drogel): review the shouldRepaint method
   @override
-  bool shouldRepaint(_RingPainter oldDelegate) => false;
+  bool shouldRepaint(_RingPainter oldDelegate) =>
+      oldDelegate.radius != radius ||
+      oldDelegate.strokeWidth != strokeWidth ||
+      oldDelegate.shadows != shadows ||
+      oldDelegate.color != color;
 }
