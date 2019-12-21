@@ -11,6 +11,7 @@ import 'package:recursive_clock/recursive_clock.dart';
 import 'package:recursive_clock/styles/color_manager.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   // A temporary measure until Platform supports web and TargetPlatform supports
   // macOS.
   if (!kIsWeb && Platform.isMacOS) {

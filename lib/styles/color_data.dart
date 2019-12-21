@@ -16,7 +16,7 @@ class ColorData extends InheritedWidget {
   final RecursiveClockColorScheme colors;
 
   static ColorData of(BuildContext context) =>
-      context.inheritFromWidgetOfExactType(ColorData);
+      context.dependOnInheritedWidgetOfExactType(aspect: ColorData);
 
   @override
   bool updateShouldNotify(ColorData oldWidget) =>

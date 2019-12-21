@@ -34,7 +34,7 @@ class _RecursiveClockState extends State<RecursiveClock> {
   Widget build(BuildContext context) {
     final colorData = ColorData.of(context);
     return Padding(
-      padding: const EdgeInsets.all(30.0),
+      padding: const EdgeInsets.all(30),
       child: RecursiveHand(
         strokeWidth: _kStrokeWidth,
         decoration: HandDecoration(

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:recursive_clock/hand/ring_pointer.dart';
 import 'package:recursive_clock/hand/ring_shadow.dart';
+import 'package:recursive_clock/hand/indicator.dart';
+import 'package:recursive_clock/hand/ring.dart';
 
 /// An immutable description of how to paint a [RingPointer] static clock hand.
 ///

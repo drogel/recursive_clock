@@ -63,7 +63,7 @@ class ClockViewModel {
   void _updateTime() {
     _now = DateTime.now();
     _timer = Timer(
-      Duration(milliseconds: 16),
+      const Duration(milliseconds: 16),
       _updateTime,
     );
     _stateController.sink.add(_convertToClockState(_now));

@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class RingShadow extends BoxShadow {
-  RingShadow({
+  const RingShadow({
     @required this.strokeWidth,
     Color color = Colors.black,
     Offset offset = Offset.zero,
@@ -26,7 +26,9 @@ class RingShadow extends BoxShadow {
       ..strokeWidth = strokeWidth
       ..maskFilter = MaskFilter.blur(BlurStyle.normal, blurSigma);
     assert(() {
-      if (debugDisableShadows) paint.maskFilter = null;
+      if (debugDisableShadows) {
+        paint.maskFilter = null;
+      }
       return true;
     }());
     return paint;
