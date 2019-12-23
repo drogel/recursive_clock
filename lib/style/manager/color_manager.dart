@@ -5,7 +5,9 @@ import 'package:recursive_clock/style/dark_colors.dart';
 import 'package:recursive_clock/style/light_colors.dart';
 
 class ColorManager extends StatelessWidget {
-  const ColorManager({Key key, this.child}) : super(key: key);
+  const ColorManager({Key key, @required this.child})
+      : assert(child != null),
+        super(key: key);
 
   final Widget child;
 
