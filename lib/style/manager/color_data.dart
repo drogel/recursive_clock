@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recursive_clock/styles/color_scheme.dart';
+import 'package:recursive_clock/style/color_scheme.dart';
 
 class ColorData extends InheritedWidget {
   const ColorData({

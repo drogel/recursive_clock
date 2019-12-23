@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:recursive_clock/styles/color_data.dart';
-import 'package:recursive_clock/styles/color_scheme.dart';
-import 'package:recursive_clock/styles/dark_colors.dart';
-import 'package:recursive_clock/styles/light_colors.dart';
+import 'package:recursive_clock/style/manager/color_data.dart';
+import 'package:recursive_clock/style/color_scheme.dart';
+import 'package:recursive_clock/style/dark_colors.dart';
+import 'package:recursive_clock/style/light_colors.dart';
 
 class ColorManager extends StatelessWidget {
   const ColorManager({Key key, this.child}) : super(key: key);

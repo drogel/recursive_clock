@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:recursive_clock/styles/color_scheme.dart';
+import 'package:recursive_clock/style/color_scheme.dart';
 
 const _kRingOpacity = 0.9;
 const _kShadowOpacity = 0.05;

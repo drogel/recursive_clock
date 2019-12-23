@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:recursive_clock/clock/view/hand/recursive_hand.dart';
 import 'package:recursive_clock/clock/view/hand/hand_decoration.dart';
 import 'package:recursive_clock/clock/view/hand/ring_shadow.dart';
-import 'package:recursive_clock/styles/color_data.dart';
+import 'package:recursive_clock/style/manager/color_data.dart';
 import 'package:recursive_clock/clock/view_model/clock_state.dart';
 import 'package:recursive_clock/clock/view_model/clock_view_model.dart';
 
