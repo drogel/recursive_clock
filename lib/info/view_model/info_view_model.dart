@@ -18,10 +18,20 @@ class InfoViewModel {
     final newState = InfoState(
       temperature: _model.temperatureString,
       temperatureRange: '(${_model.low} - ${_model.highString})',
-      condition: _model.weatherString,
+      condition: _capitalize(_model.weatherString),
       location: _model.location,
     );
     _stateController.sink.add(newState);
+  }
+
+  String _capitalize(String string) {
+    if (string.isEmpty) {
+      return string;
+    } else if (string.length == 1) {
+      return string.toUpperCase();
+    } else {
+      return '${string[0].toUpperCase()}${string.substring(1)}';
+    }
   }
 
   Stream<InfoState> get stateStream => _stateController.stream;

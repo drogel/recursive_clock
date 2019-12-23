@@ -1,12 +1,12 @@
 import 'dart:ui';
 
-import 'package:recursive_clock/style/color_scheme.dart';
+import 'package:recursive_clock/color/color_scheme.dart';
 
 const _kRingOpacity = 0.9;
-const _kShadowOpacity = 0.05;
+const _kShadowOpacity = 0.25;
 
-class DarkColors implements RecursiveClockColorScheme {
-  const DarkColors();
+class LightColors implements RecursiveClockColorScheme {
+  const LightColors();
 
   @override
   Color get clockRing => const Color.fromRGBO(66, 133, 244, _kRingOpacity);
@@ -37,5 +37,5 @@ class DarkColors implements RecursiveClockColorScheme {
       const Color.fromRGBO(123, 207, 169, _kShadowOpacity);
 
   @override
-  Color get text => const Color.fromRGBO(101, 101, 101, 1);
+  Color get text => const Color.fromRGBO(102, 102, 102, 1);
 }
