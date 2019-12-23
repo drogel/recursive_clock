@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:recursive_clock/hand/hand_decoration.dart';
-import 'package:recursive_clock/hand/indicator.dart';
-import 'package:recursive_clock/hand/ring.dart';
+import 'package:recursive_clock/clock/view/hand/hand_decoration.dart';
+import 'package:recursive_clock/clock/view/hand/indicator.dart';
+import 'package:recursive_clock/clock/view/hand/ring.dart';
 
 /// A widget that stacks a [Ring] and an [Indicator] for a static clock hand.
 class RingPointer extends StatelessWidget {

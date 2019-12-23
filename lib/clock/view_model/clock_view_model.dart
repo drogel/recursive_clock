@@ -3,7 +3,7 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/foundation.dart';
-import 'package:recursive_clock/view_model/clock_state.dart';
+import 'package:recursive_clock/clock/view_model/clock_state.dart';
 import 'package:vector_math/vector_math_64.dart' show radians;
 
 const _kDebugTimeSpeedFactor = 1;

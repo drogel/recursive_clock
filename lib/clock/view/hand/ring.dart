@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:recursive_clock/hand/ring_shadow.dart';
+import 'package:recursive_clock/clock/view/hand/ring_shadow.dart';
 
 const double _kStrokeWidth = 1;
 

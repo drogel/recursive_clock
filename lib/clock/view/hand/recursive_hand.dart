@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:recursive_clock/hand/ring_pointer.dart';
-import 'package:recursive_clock/hand/hand.dart';
-import 'package:recursive_clock/hand/hand_decoration.dart';
-import 'package:recursive_clock/recursive_clock.dart';
-import 'package:recursive_clock/hand/ring.dart';
-import 'package:recursive_clock/hand/indicator.dart';
+import 'package:recursive_clock/clock/view/hand/ring_pointer.dart';
+import 'package:recursive_clock/clock/view/hand/hand.dart';
+import 'package:recursive_clock/clock/view/hand/hand_decoration.dart';
+import 'package:recursive_clock/clock/view/recursive_clock.dart';
+import 'package:recursive_clock/clock/view/hand/ring.dart';
+import 'package:recursive_clock/clock/view/hand/indicator.dart';
 
 /// A widget that draws a clock [Hand] that can have another child [Hand] in it.
 ///

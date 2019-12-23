@@ -16,4 +16,6 @@ abstract class RecursiveClockColorScheme {
   Color get minuteRingShadow;
 
   Color get secondRingShadow;
+
+  Color get text;
 }
