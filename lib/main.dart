@@ -26,9 +26,9 @@ void main() {
 
   runApp(
     ClockCustomizer(
-      (_) => ColorManager(
+      (model) => ColorManager(
         child: InfoManager(
-          InfoViewModel(ClockModel()),
+          InfoViewModel(model),
           child: InfoPanel(),
         ),
       ),

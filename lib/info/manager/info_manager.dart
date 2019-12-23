@@ -20,10 +20,19 @@ class InfoManager extends StatefulWidget {
 }
 
 class _InfoManagerState extends State<InfoManager> {
+  InfoViewModel _viewModel;
+
+  @override
+  void initState() {
+    _viewModel = widget._viewModel;
+    _viewModel.init();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) => StreamBuilder<InfoState>(
-    initialData: widget._viewModel.initialData,
-        stream: widget._viewModel.stateStream,
+    initialData: _viewModel.initialData,
+        stream: _viewModel.stateStream,
         builder: (_, snapshot) => InfoData(
           temperature: snapshot.data.temperature,
           temperatureRange: snapshot.data.temperatureRange,
@@ -35,7 +44,7 @@ class _InfoManagerState extends State<InfoManager> {
 
   @override
   void dispose() {
-    widget._viewModel.dispose();
+    _viewModel.dispose();
     super.dispose();
   }
 }

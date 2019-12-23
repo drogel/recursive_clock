@@ -9,6 +9,8 @@ class InfoState {
         assert(condition != null),
         assert(location != null);
 
+  factory InfoState.empty() => InfoState();
+
   final String temperature;
   final String temperatureRange;
   final String condition;

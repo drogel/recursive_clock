@@ -1,4 +1,3 @@
-
 import 'dart:async';
 
 import 'package:recursive_clock/helper/model.dart';
@@ -8,15 +7,29 @@ class InfoViewModel {
   InfoViewModel(this._model);
 
   final ClockModel _model;
+  final _stateController = StreamController<InfoState>();
 
-  final _stateStreamController = StreamController<InfoState>();
+  void init() {
+    _model.addListener(_updateState);
+    _updateState();
+  }
 
-  Stream<InfoState> get stateStream => _stateStreamController.stream;
+  void _updateState() {
+    final newState = InfoState(
+      temperature: _model.temperatureString,
+      temperatureRange: '(${_model.low} - ${_model.highString})',
+      condition: _model.weatherString,
+      location: _model.location,
+    );
+    _stateController.sink.add(newState);
+  }
 
-  InfoState get initialData => InfoState();
+  Stream<InfoState> get stateStream => _stateController.stream;
+
+  InfoState get initialData => InfoState.empty();
 
   void dispose() {
-    _stateStreamController.close();
-    // TODO: remove model listeners
+    _stateController.close();
+    _model.removeListener(_updateState);
   }
 }

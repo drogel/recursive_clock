@@ -21,10 +21,11 @@ class ClockViewModel {
 
   final Offset _shadowsOffset;
   final double _shadowsAngleRadians;
-
   final StreamController _stateController = StreamController<ClockState>();
   DateTime _now = DateTime.now();
   Timer _timer;
+
+  void init() => _updateTime();
 
   ClockState _convertToClockState(DateTime time) {
     final hourRadians = time.hour * _radiansPerHour +
@@ -68,8 +69,6 @@ class ClockViewModel {
     );
     _stateController.sink.add(_convertToClockState(_now));
   }
-
-  void init() => _updateTime();
 
   Stream<ClockState> get stateStream => _stateController.stream;
 
