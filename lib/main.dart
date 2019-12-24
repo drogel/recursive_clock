@@ -6,11 +6,8 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:recursive_clock/clock_info_layout.dart';
 import 'package:recursive_clock/helper/customizer.dart';
-import 'package:recursive_clock/info/inherited/info_updater.dart';
-import 'package:recursive_clock/info/view_model/info_view_model.dart';
-import 'package:recursive_clock/color/inherited/color_updater.dart';
+import 'package:recursive_clock/recursive_clock_app.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,14 +20,5 @@ void main() {
     debugDefaultTargetPlatformOverride = TargetPlatform.fuchsia;
   }
 
-  runApp(
-    ClockCustomizer(
-      (model) => ColorUpdater(
-        child: InfoUpdater(
-          InfoViewModel(model),
-          child: const ClockInfoLayout(),
-        ),
-      ),
-    ),
-  );
+  runApp(ClockCustomizer((model) => RecursiveClockApp(model)));
 }

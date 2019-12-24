@@ -1,13 +1,20 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:recursive_clock/helper/model.dart';
 import 'package:recursive_clock/info/view_model/info_state.dart';
 
 class InfoViewModel {
-  InfoViewModel(this._model);
+  InfoViewModel({
+    @required ClockModel model,
+    @required StreamController<InfoState> stateController,
+  })  : assert(model != null),
+        assert(stateController != null),
+        _model = model,
+        _stateController = stateController;
 
   final ClockModel _model;
-  final _stateController = StreamController<InfoState>();
+  final StreamController<InfoState> _stateController;
 
   void init() {
     _model.addListener(_updateState);
