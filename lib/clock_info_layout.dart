@@ -1,18 +1,22 @@
-import 'package:flutter/cupertino.dart';
-import 'package:recursive_clock/clock/view/recursive_clock.dart';
-import 'package:recursive_clock/info/view/info_panel.dart';
+import 'package:flutter/material.dart';
 
 class ClockInfoLayout extends StatelessWidget {
-  const ClockInfoLayout();
+  const ClockInfoLayout({
+    this.infoPanel,
+    this.clock,
+  });
+
+  final Widget infoPanel;
+  final Widget clock;
 
   @override
   Widget build(BuildContext context) => Padding(
         padding: const EdgeInsets.all(24.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: const <Widget>[
-            InfoPanel(),
-            RecursiveClock(),
+          children: <Widget>[
+            if (infoPanel != null) infoPanel,
+            if (clock != null) clock,
           ],
         ),
       );
