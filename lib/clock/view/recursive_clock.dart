@@ -8,21 +8,23 @@ import 'package:recursive_clock/clock/view_model/clock_view_model.dart';
 
 const double _kChildHandSize = 0.61803398875;
 const double _kStrokeWidth = 42;
-const Offset _kRingShadowsOffset = Offset(15, 15);
 
 class RecursiveClock extends StatefulWidget {
-  const RecursiveClock();
+  const RecursiveClock(this._viewModel);
+
+  final ClockViewModel _viewModel;
 
   @override
   _RecursiveClockState createState() => _RecursiveClockState();
 }
 
 class _RecursiveClockState extends State<RecursiveClock> {
-  final _viewModel = ClockViewModel(desiredShadowsOffset: _kRingShadowsOffset);
+  ClockViewModel _viewModel;
   ClockState _state;
 
   @override
   void initState() {
+    _viewModel = widget._viewModel;
     _updateState(_viewModel.initialData);
     _viewModel
       ..init()
@@ -45,7 +47,7 @@ class _RecursiveClockState extends State<RecursiveClock> {
             color: colorData.colors.clockRingShadow,
             blurRadius: 2,
             spreadRadius: 2,
-            offset: _kRingShadowsOffset,
+            offset: _state.baseShadowOffset,
           ),
         ],
       ),

@@ -7,6 +7,7 @@ import 'package:recursive_clock/clock/view_model/clock_state.dart';
 import 'package:vector_math/vector_math_64.dart' show radians;
 
 const _kDebugTimeSpeedFactor = 1;
+const _kDefaultShadowsOffset = Offset(15, 15);
 
 final _radiansPerTick = _kDebugTimeSpeedFactor * radians(360 / 60);
 final _radiansPerMillisecond = _kDebugTimeSpeedFactor * radians(360 / 60000);
@@ -14,15 +15,17 @@ final _radiansPerHour = _kDebugTimeSpeedFactor * radians(360 / 12);
 
 class ClockViewModel {
   ClockViewModel({
-    @required Offset desiredShadowsOffset,
+    @required StreamController<ClockState> stateController,
+    Offset desiredShadowsOffset = _kDefaultShadowsOffset,
   })  : assert(desiredShadowsOffset != null),
+        assert(stateController != null),
+        _stateController = stateController,
         _shadowsOffset = desiredShadowsOffset,
         _shadowsAngleRadians = -desiredShadowsOffset.direction + pi / 2;
 
   final Offset _shadowsOffset;
   final double _shadowsAngleRadians;
-  final StreamController _stateController = StreamController<ClockState>();
-  DateTime _now = DateTime.now();
+  final StreamController _stateController;
   Timer _timer;
 
   void init() => _updateTime();
@@ -50,6 +53,7 @@ class ClockViewModel {
       hourRadians: recursiveHourRadians,
       minuteRadians: recursiveMinuteRadians,
       secondRadians: recursiveSecondRadians,
+      baseShadowOffset: _shadowsOffset,
       hourShadowOffset: hourShadowOffset,
       minuteShadowOffset: minuteShadowOffset,
       secondShadowOffset: secondShadowOffset,
@@ -62,17 +66,16 @@ class ClockViewModel {
       );
 
   void _updateTime() {
-    _now = DateTime.now();
     _timer = Timer(
       const Duration(milliseconds: 16),
       _updateTime,
     );
-    _stateController.sink.add(_convertToClockState(_now));
+    _stateController.sink.add(_convertToClockState(DateTime.now()));
   }
 
   Stream<ClockState> get stateStream => _stateController.stream;
 
-  ClockState get initialData => _convertToClockState(_now);
+  ClockState get initialData => _convertToClockState(DateTime.now());
 
   void dispose() {
     _timer?.cancel();
