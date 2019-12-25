@@ -4,6 +4,7 @@ import 'dart:ui';
 
 import 'package:flutter/foundation.dart';
 import 'package:recursive_clock/clock/view_model/clock_state.dart';
+import 'package:recursive_clock/clock/view_model/time.dart';
 import 'package:vector_math/vector_math_64.dart' show radians;
 
 const _kDebugTimeSpeedFactor = 1;
@@ -17,8 +18,11 @@ class ClockViewModel {
   ClockViewModel({
     @required StreamController<ClockState> stateController,
     Offset desiredShadowsOffset = _kDefaultShadowsOffset,
+    Time time = const Time(),
   })  : assert(desiredShadowsOffset != null),
         assert(stateController != null),
+        assert(time != null),
+        _time = time,
         _stateController = stateController,
         _shadowsOffset = desiredShadowsOffset,
         _shadowsAngleRadians = -desiredShadowsOffset.direction + pi / 2;
@@ -26,9 +30,14 @@ class ClockViewModel {
   final Offset _shadowsOffset;
   final double _shadowsAngleRadians;
   final StreamController _stateController;
+  final Time _time;
   Timer _timer;
 
   void init() => _updateTime();
+
+  Stream<ClockState> get stateStream => _stateController.stream;
+
+  ClockState get initialData => _convertToClockState(_time.now());
 
   ClockState _convertToClockState(DateTime time) {
     final hourRadians = time.hour * _radiansPerHour +
@@ -70,12 +79,8 @@ class ClockViewModel {
       const Duration(milliseconds: 16),
       _updateTime,
     );
-    _stateController.sink.add(_convertToClockState(DateTime.now()));
+    _stateController.sink.add(_convertToClockState(_time.now()));
   }
-
-  Stream<ClockState> get stateStream => _stateController.stream;
-
-  ClockState get initialData => _convertToClockState(DateTime.now());
 
   void dispose() {
     _timer?.cancel();

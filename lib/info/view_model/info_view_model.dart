@@ -21,6 +21,10 @@ class InfoViewModel {
     _updateState();
   }
 
+  Stream<InfoState> get stateStream => _stateController.stream;
+
+  InfoState get initialData => InfoState.empty();
+
   void _updateState() {
     final newState = InfoState(
       temperature: _model.temperatureString,
@@ -40,10 +44,6 @@ class InfoViewModel {
       return '${string[0].toUpperCase()}${string.substring(1)}';
     }
   }
-
-  Stream<InfoState> get stateStream => _stateController.stream;
-
-  InfoState get initialData => InfoState.empty();
 
   void dispose() {
     _stateController.close();
