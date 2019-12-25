@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 /// Indicator's top distance relative to its parent default value.
-const double _kTopPadding = 12;
+const double _kTopPadding = 16;
 
 /// Indicator's size default value.
-const double _kSize = 24;
+const double _kSize = _kTopPadding;
 
 /// A widget that indicates the clock number whose parent hand is pointing to.
 ///

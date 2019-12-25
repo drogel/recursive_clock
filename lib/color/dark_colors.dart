@@ -9,7 +9,7 @@ class DarkColors implements RecursiveClockColorScheme {
   const DarkColors();
 
   @override
-  Color get clockRing => const Color.fromRGBO(66, 133, 244, _kRingOpacity);
+  Color get baseRing => const Color.fromRGBO(66, 133, 244, _kRingOpacity);
 
   @override
   Color get clockRingShadow =>

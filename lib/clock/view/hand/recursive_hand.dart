@@ -18,7 +18,7 @@ class RecursiveHand extends Hand {
     double size = 1,
     this.decoration = const HandDecoration(),
     this.scaleAlignment = Alignment.topCenter,
-    this.hasIndicator = false,
+    this.hasIndicator = true,
     this.child,
   })  : assert(strokeWidth != null),
         super(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 abstract class RecursiveClockColorScheme {
-  Color get clockRing;
+  Color get baseRing;
 
   Color get hourRing;
 

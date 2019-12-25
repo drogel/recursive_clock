@@ -34,10 +34,7 @@ class _InfoUpdaterState extends State<InfoUpdater> {
     initialData: _viewModel.initialData,
         stream: _viewModel.stateStream,
         builder: (_, snapshot) => InfoData(
-          temperature: snapshot.data.temperature,
-          temperatureRange: snapshot.data.temperatureRange,
-          location: snapshot.data.location,
-          condition: snapshot.data.condition,
+          infoState: snapshot.data,
           child: widget.child,
         ),
       );

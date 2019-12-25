@@ -1,31 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:recursive_clock/info/view_model/info_state.dart';
 
 class InfoData extends InheritedWidget {
   const InfoData({
-    this.temperature = '',
-    this.temperatureRange = '',
-    this.condition = '',
-    this.location = '',
+    @required this.infoState,
     @required Widget child,
-  })  : assert(temperature != null),
-        assert(temperatureRange != null),
-        assert(condition != null),
-        assert(location != null),
+  })  : assert(infoState != null),
         assert(child != null),
         super(child: child);
 
-  final String temperature;
-  final String temperatureRange;
-  final String condition;
-  final String location;
+  final InfoState infoState;
 
   static InfoData of(BuildContext context) =>
       context.dependOnInheritedWidgetOfExactType(aspect: InfoData);
 
   @override
-  bool updateShouldNotify(InfoData oldWidget) =>
-      oldWidget.temperature != temperature ||
-      oldWidget.temperatureRange != temperatureRange ||
-      oldWidget.condition != condition ||
-      oldWidget.location != location;
+  bool updateShouldNotify(InfoData oldWidget) => oldWidget.infoState != infoState;
 }
