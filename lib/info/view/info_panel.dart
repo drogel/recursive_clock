@@ -11,7 +11,7 @@ class InfoPanel extends StatelessWidget {
     return DefaultTextStyle(
       style: TextStyle(
         color: ColorData.of(context).colors.text,
-        fontSize: 20,
+        fontSize: 18,
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
@@ -19,7 +19,7 @@ class InfoPanel extends StatelessWidget {
         children: [
           Text(
             infoState.temperature,
-            style: TextStyle(fontWeight: FontWeight.w900, fontSize: 54),
+            style: TextStyle(fontWeight: FontWeight.w900, fontSize: 50),
           ),
           Text(infoState.temperatureRange),
           Text(infoState.condition),

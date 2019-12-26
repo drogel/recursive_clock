@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 /// Indicator's top distance relative to its parent default value.
-const double _kTopPadding = 16;
+const double _kTopPadding = 12;
 
 /// Indicator's size default value.
-const double _kSize = _kTopPadding;
+const double _kSize = 18;
 
 /// A widget that indicates the clock number whose parent hand is pointing to.
 ///
@@ -13,8 +13,6 @@ const double _kSize = _kTopPadding;
 /// corresponding hour, minute or second more clearly.
 class Indicator extends StatelessWidget {
   /// Creates a widget that highlights a clock number.
-  ///
-  /// None of its properties should be null.
   const Indicator({
     this.color = Colors.black,
     this.topPadding = _kTopPadding,
