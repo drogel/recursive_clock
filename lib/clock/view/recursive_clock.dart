@@ -5,9 +5,9 @@ import 'package:recursive_clock/clock/view/hand/hand_decoration.dart';
 import 'package:recursive_clock/clock/view/hand/ring_shadow.dart';
 import 'package:recursive_clock/color/inherited/color_data.dart';
 
-const double _kGoldenRatio = 1.61803398875;
-const double _kChildHandSize = 1/_kGoldenRatio;
-const double _kStrokeWidthFraction = (1-1/_kGoldenRatio)/2;
+const double kGoldenRatio = 1.61803398875;
+const double _kChildHandSize = 1/kGoldenRatio;
+const double _kStrokeWidthFraction = (1-1/kGoldenRatio)/2;
 
 class RecursiveClock extends StatelessWidget {
   const RecursiveClock();
