@@ -9,7 +9,7 @@ abstract class RecursiveClockColorScheme {
 
   Color get secondRing;
 
-  Color get clockRingShadow;
+  Color get baseRingShadow;
 
   Color get hourRingShadow;
 

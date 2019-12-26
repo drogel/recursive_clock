@@ -12,7 +12,7 @@ class LightColors implements RecursiveClockColorScheme {
   Color get baseRing => const Color.fromRGBO(66, 133, 244, _kRingOpacity);
 
   @override
-  Color get clockRingShadow =>
+  Color get baseRingShadow =>
       const Color.fromRGBO(160, 195, 255, _kShadowOpacity);
 
   @override

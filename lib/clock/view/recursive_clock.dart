@@ -23,7 +23,7 @@ class RecursiveClock extends StatelessWidget {
         ringShadows: [
           RingShadow(
             strokeWidth: _kStrokeWidth,
-            color: colorData.colors.clockRingShadow,
+            color: colorData.colors.baseRingShadow,
             blurRadius: 2,
             spreadRadius: 2,
             offset: state.baseShadowOffset,
