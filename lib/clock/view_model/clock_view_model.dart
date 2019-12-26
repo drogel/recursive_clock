@@ -3,8 +3,8 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/foundation.dart';
+import 'package:recursive_clock/clock/model/time_model.dart';
 import 'package:recursive_clock/clock/view_model/clock_state.dart';
-import 'package:recursive_clock/clock/view_model/time.dart';
 import 'package:vector_math/vector_math_64.dart' show radians;
 
 const _kDebugTimeSpeedFactor = 1;
@@ -17,12 +17,12 @@ final _radiansPerHour = _kDebugTimeSpeedFactor * radians(360 / 12);
 class ClockViewModel {
   ClockViewModel({
     @required StreamController<ClockState> stateController,
+    @required TimeModel model,
     Offset desiredShadowsOffset = _kDefaultShadowsOffset,
-    Time time = const Time(),
   })  : assert(desiredShadowsOffset != null),
         assert(stateController != null),
-        assert(time != null),
-        _time = time,
+        assert(model != null),
+        _time = model,
         _stateController = stateController,
         _shadowsOffset = desiredShadowsOffset,
         _shadowsAngleRadians = -desiredShadowsOffset.direction + pi / 2;
@@ -30,7 +30,7 @@ class ClockViewModel {
   final Offset _shadowsOffset;
   final double _shadowsAngleRadians;
   final StreamController _stateController;
-  final Time _time;
+  final TimeModel _time;
   Timer _timer;
 
   void init() => _updateTime();
