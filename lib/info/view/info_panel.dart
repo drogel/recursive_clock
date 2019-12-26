@@ -10,20 +10,25 @@ class InfoPanel extends StatelessWidget {
     final infoState = InfoData.of(context).infoState;
     return DefaultTextStyle(
       style: TextStyle(
-        color: ColorData.of(context).colors.text,
-        fontSize: 18,
-      ),
+          color: ColorData.of(context).colors.text,
+          fontSize: 20,
+          fontFamily: "Montserrat"),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             infoState.temperature,
-            style: TextStyle(fontWeight: FontWeight.w900, fontSize: 50),
+            style: TextStyle(
+              fontWeight: FontWeight.w100,
+              fontSize: 64,
+            ),
           ),
-          Text(infoState.temperatureRange),
-          Text(infoState.condition),
           Text(infoState.location),
+          Text(
+            infoState.condition,
+            style: TextStyle(fontWeight: FontWeight.w700),
+          ),
         ],
       ),
     );

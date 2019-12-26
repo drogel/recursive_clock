@@ -8,7 +8,7 @@ import 'package:recursive_clock/clock/view_model/clock_state.dart';
 import 'package:vector_math/vector_math_64.dart' show radians;
 
 const _kDebugTimeSpeedFactor = 1;
-const _kDefaultShadowsOffset = Offset(15, 15);
+const _kDefaultShadowsOffset = Offset(16, 16);
 
 final _radiansPerTick = _kDebugTimeSpeedFactor * radians(360 / 60);
 final _radiansPerMillisecond = _kDebugTimeSpeedFactor * radians(360 / 60000);
