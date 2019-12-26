@@ -24,8 +24,7 @@ class _ClockUpdaterState extends State<ClockUpdater> {
 
   @override
   void initState() {
-    _viewModel = widget._viewModel;
-    _viewModel.init();
+    _viewModel = widget._viewModel..init();
     super.initState();
   }
 

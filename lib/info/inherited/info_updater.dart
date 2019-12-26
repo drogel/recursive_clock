@@ -24,14 +24,13 @@ class _InfoUpdaterState extends State<InfoUpdater> {
 
   @override
   void initState() {
-    _viewModel = widget._viewModel;
-    _viewModel.init();
+    _viewModel = widget._viewModel..init();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) => StreamBuilder<InfoState>(
-    initialData: _viewModel.initialData,
+        initialData: _viewModel.initialData,
         stream: _viewModel.stateStream,
         builder: (_, snapshot) => InfoData(
           infoState: snapshot.data,
