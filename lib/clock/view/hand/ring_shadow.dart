@@ -25,12 +25,6 @@ class RingShadow extends BoxShadow {
       ..style = PaintingStyle.stroke
       ..strokeWidth = strokeWidth
       ..maskFilter = MaskFilter.blur(BlurStyle.normal, blurSigma);
-    assert(() {
-      if (debugDisableShadows) {
-        paint.maskFilter = null;
-      }
-      return true;
-    }());
     return paint;
   }
 
