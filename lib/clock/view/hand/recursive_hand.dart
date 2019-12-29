@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recursive_clock/clock/view/hand/hand_transform.dart';
 import 'package:recursive_clock/clock/view/hand/ring_pointer.dart';
 import 'package:recursive_clock/clock/view/hand/hand.dart';
 import 'package:recursive_clock/clock/view/hand/hand_decoration.dart';
@@ -18,7 +19,7 @@ class RecursiveHand extends Hand {
     double size = 1,
     this.decoration = const HandDecoration(),
     this.scaleAlignment = Alignment.topCenter,
-    this.hasIndicator = true,
+    this.hasIndicator = false,
     this.child,
   })  : assert(strokeWidth != null),
         super(
@@ -48,26 +49,19 @@ class RecursiveHand extends Hand {
   final bool hasIndicator;
 
   @override
-  Widget build(BuildContext context) => Center(
-        child: AspectRatio(
-          aspectRatio: 1,
-          child: Transform.rotate(
-            angle: angleRadians,
-            child: Transform.scale(
-              scale: size,
-              alignment: scaleAlignment,
-              child: Stack(
-                children: <Widget>[
-                  RingPointer(
-                    strokeWidth: strokeWidth,
-                    decoration: decoration,
-                    hasIndicator: hasIndicator,
-                  ),
-                  if (child != null) child
-                ],
-              ),
+  Widget build(BuildContext context) => HandTransform(
+        angleRadians: angleRadians,
+        size: size,
+        scaleAlignment: scaleAlignment,
+        child: Stack(
+          children: <Widget>[
+            RingPointer(
+              strokeWidth: strokeWidth,
+              decoration: decoration,
+              hasIndicator: hasIndicator,
             ),
-          ),
+            if (child != null) child,
+          ],
         ),
       );
 }
