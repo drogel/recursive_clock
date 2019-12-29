@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:recursive_clock/clock/view/hand/hand_transform.dart';
 import 'package:recursive_clock/clock/view/hand/hand.dart';
-import 'package:recursive_clock/clock/view/hand/ring_shadow.dart';
-import 'package:recursive_clock/clock/view/hand/ring_shadow_paint.dart';
+import 'package:recursive_clock/clock/view/shadow/ring_shadow.dart';
+import 'package:recursive_clock/clock/view/shadow/ring_shadow_paint.dart';
 
 class RecursiveHandShadow extends Hand {
   const RecursiveHandShadow({

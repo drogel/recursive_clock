@@ -1,18 +1,14 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:recursive_clock/clock/view/hand/ring_shadow.dart';
+import 'package:recursive_clock/clock/view/ring/ring.dart';
+import 'package:recursive_clock/clock/view/shadow/ring_shadow.dart';
 
-const double _kStrokeWidth = 1;
-
-class RingShadowPaint extends StatelessWidget {
+class RingShadowPaint extends Ring {
   const RingShadowPaint({
     @required this.ringShadow,
-    this.strokeWidth = _kStrokeWidth,
-  })  : assert(ringShadow != null),
-        assert(strokeWidth != null);
+  }) : assert(ringShadow != null);
 
-  final double strokeWidth;
   final RingShadow ringShadow;
 
   @override

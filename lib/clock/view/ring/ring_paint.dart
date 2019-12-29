@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:recursive_clock/clock/view/ring/ring.dart';
 
-const double _kStrokeWidth = 1;
-
-class RingPaint extends StatelessWidget {
+class RingPaint extends Ring {
   const RingPaint({
     this.color = Colors.black,
-    this.strokeWidth = _kStrokeWidth,
+    double strokeWidth,
   })  : assert(color != null),
-        assert(strokeWidth != null);
+        super(strokeWidth: strokeWidth);
 
   final Color color;
-  final double strokeWidth;
 
   @override
   Widget build(BuildContext context) => LayoutBuilder(
@@ -27,8 +25,8 @@ class RingPaint extends StatelessWidget {
 class _RingPainter extends CustomPainter {
   const _RingPainter({
     @required this.radius,
-    this.color = Colors.black,
-    this.strokeWidth = _kStrokeWidth,
+    @required this.strokeWidth,
+    @required this.color,
   })  : assert(color != null),
         assert(radius != null),
         assert(strokeWidth != null);

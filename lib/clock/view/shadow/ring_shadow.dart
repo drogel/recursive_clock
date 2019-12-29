@@ -6,8 +6,8 @@ class RingShadow extends BoxShadow {
     @required this.strokeWidth,
     Color color = Colors.black,
     Offset offset = Offset.zero,
-    double spreadRadius = 0,
-    double blurRadius = 0,
+    double spreadRadius = 2,
+    double blurRadius = 4,
   })  : assert(strokeWidth != null),
         super(
           color: color,

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:recursive_clock/clock/inherited/clock_data.dart';
-import 'package:recursive_clock/clock/view/hand/recursive_hand.dart';
+import 'package:recursive_clock/clock/view/recursive_hand/recursive_hand.dart';
 import 'package:recursive_clock/clock/view/hand/hand_decoration.dart';
-import 'package:recursive_clock/clock/view/hand/recursive_hand_shadow.dart';
-import 'package:recursive_clock/clock/view/hand/ring_shadow.dart';
+import 'package:recursive_clock/clock/view/recursive_hand/recursive_hand_shadow.dart';
+import 'package:recursive_clock/clock/view/shadow/ring_shadow.dart';
+import 'package:recursive_clock/clock/view_model/clock_state.dart';
+import 'package:recursive_clock/color/color_scheme.dart';
 import 'package:recursive_clock/color/inherited/color_data.dart';
 
 const double kGoldenRatio = 1.61803398875;
@@ -13,94 +15,109 @@ const double _kStrokeWidthFraction = (1 - 1 / kGoldenRatio) / 2;
 class RecursiveClock extends StatelessWidget {
   const RecursiveClock();
 
-  @override
-  Widget build(BuildContext context) {
-    final colorData = ColorData.of(context);
-    final state = ClockData.of(context).clockState;
-    return LayoutBuilder(
-      builder: (_, constraints) {
-        final strokeWidth = _kStrokeWidthFraction * constraints.maxHeight;
-        return Stack(
-          children: <Widget>[
-            RecursiveHandShadow(
+  Widget _buildShadows(
+    BuildContext context, {
+    @required double strokeWidth,
+    @required RecursiveClockColorScheme colors,
+    @required ClockState state,
+  }) =>
+      RecursiveHandShadow(
+        ringShadow: RingShadow(
+          strokeWidth: strokeWidth,
+          color: colors.baseRingShadow,
+          offset: state.baseShadowOffset,
+        ),
+        child: RecursiveHandShadow(
+          size: _kChildHandSize,
+          angleRadians: state.hourRadians,
+          ringShadow: RingShadow(
+            strokeWidth: strokeWidth,
+            color: colors.hourRingShadow,
+            offset: state.hourShadowOffset,
+          ),
+          child: RecursiveHandShadow(
+            size: _kChildHandSize,
+            angleRadians: state.minuteRadians,
+            ringShadow: RingShadow(
+              strokeWidth: strokeWidth,
+              color: colors.minuteRingShadow,
+              offset: state.minuteShadowOffset,
+            ),
+            child: RecursiveHandShadow(
+              size: _kChildHandSize,
+              angleRadians: state.secondRadians,
               ringShadow: RingShadow(
                 strokeWidth: strokeWidth,
-                color: colorData.colors.baseRingShadow,
-                blurRadius: 2,
-                spreadRadius: 2,
-                offset: state.baseShadowOffset,
-              ),
-              child: RecursiveHandShadow(
-                size: _kChildHandSize,
-                angleRadians: state.hourRadians,
-                ringShadow: RingShadow(
-                  strokeWidth: strokeWidth,
-                  color: colorData.colors.hourRingShadow,
-                  blurRadius: 2,
-                  spreadRadius: 2,
-                  offset: state.hourShadowOffset,
-                ),
-                child: RecursiveHandShadow(
-                  size: _kChildHandSize,
-                  angleRadians: state.minuteRadians,
-                  ringShadow: RingShadow(
-                    strokeWidth: strokeWidth,
-                    color: colorData.colors.minuteRingShadow,
-                    blurRadius: 2,
-                    spreadRadius: 2,
-                    offset: state.minuteShadowOffset,
-                  ),
-                  child: RecursiveHandShadow(
-                    size: _kChildHandSize,
-                    angleRadians: state.secondRadians,
-                    ringShadow: RingShadow(
-                      strokeWidth: strokeWidth,
-                      color: colorData.colors.secondRingShadow,
-                      blurRadius: 2,
-                      spreadRadius: 2,
-                      offset: state.secondShadowOffset,
-                    ),
-                  ),
-                ),
+                color: colors.secondRingShadow,
+                offset: state.secondShadowOffset,
               ),
             ),
-            RecursiveHand(
+          ),
+        ),
+      );
+
+  Widget _buildHands(
+    BuildContext context, {
+    @required double strokeWidth,
+    @required RecursiveClockColorScheme colors,
+    @required ClockState state,
+  }) =>
+      RecursiveHand(
+        strokeWidth: strokeWidth,
+        decoration: HandDecoration(
+          color: colors.baseRing,
+        ),
+        child: RecursiveHand(
+          strokeWidth: strokeWidth,
+          size: _kChildHandSize,
+          angleRadians: state.hourRadians,
+          decoration: HandDecoration(
+            color: colors.hourRing,
+            indicatorColor: colors.baseRing,
+          ),
+          child: RecursiveHand(
+            strokeWidth: strokeWidth,
+            size: _kChildHandSize,
+            angleRadians: state.minuteRadians,
+            decoration: HandDecoration(
+              color: colors.minuteRing,
+              indicatorColor: colors.hourRing,
+            ),
+            child: RecursiveHand(
               strokeWidth: strokeWidth,
-              hasIndicator: false,
+              size: _kChildHandSize,
+              angleRadians: state.secondRadians,
               decoration: HandDecoration(
-                color: colorData.colors.baseRing,
-              ),
-              child: RecursiveHand(
-                strokeWidth: strokeWidth,
-                size: _kChildHandSize,
-                angleRadians: state.hourRadians,
-                decoration: HandDecoration(
-                  color: colorData.colors.hourRing,
-                  indicatorColor: colorData.colors.baseRing,
-                ),
-                child: RecursiveHand(
-                  strokeWidth: strokeWidth,
-                  size: _kChildHandSize,
-                  angleRadians: state.minuteRadians,
-                  decoration: HandDecoration(
-                    color: colorData.colors.minuteRing,
-                    indicatorColor: colorData.colors.hourRing,
-                  ),
-                  child: RecursiveHand(
-                    strokeWidth: strokeWidth,
-                    size: _kChildHandSize,
-                    angleRadians: state.secondRadians,
-                    decoration: HandDecoration(
-                      color: colorData.colors.secondRing,
-                      indicatorColor: colorData.colors.minuteRing,
-                    ),
-                  ),
-                ),
+                color: colors.secondRing,
+                indicatorColor: colors.minuteRing,
               ),
             ),
-          ],
-        );
-      },
-    );
-  }
+          ),
+        ),
+      );
+
+  @override
+  Widget build(BuildContext context) => LayoutBuilder(
+        builder: (context, constraints) {
+          final colors = ColorData.of(context).colors;
+          final state = ClockData.of(context).clockState;
+          final strokeWidth = _kStrokeWidthFraction * constraints.maxHeight;
+          return Stack(
+            children: <Widget>[
+              _buildShadows(
+                context,
+                strokeWidth: strokeWidth,
+                colors: colors,
+                state: state,
+              ),
+              _buildHands(
+                context,
+                strokeWidth: strokeWidth,
+                colors: colors,
+                state: state,
+              ),
+            ],
+          );
+        },
+      );
 }
