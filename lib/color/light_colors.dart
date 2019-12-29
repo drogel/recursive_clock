@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:recursive_clock/color/color_scheme.dart';
 
-const _kRingOpacity = 0.9;
+const _kRingOpacity = 0.85;
 const _kShadowOpacity = 0.25;
 
 class LightColors implements RecursiveClockColorScheme {
