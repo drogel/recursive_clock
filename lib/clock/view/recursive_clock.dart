@@ -23,51 +23,43 @@ class RecursiveClock extends StatelessWidget {
         return Stack(
           children: <Widget>[
             RecursiveHandShadow(
-              ringShadows: [
-                RingShadow(
-                  strokeWidth: strokeWidth,
-                  color: colorData.colors.baseRingShadow,
-                  blurRadius: 2,
-                  spreadRadius: 2,
-                  offset: state.baseShadowOffset,
-                ),
-              ],
+              ringShadow: RingShadow(
+                strokeWidth: strokeWidth,
+                color: colorData.colors.baseRingShadow,
+                blurRadius: 2,
+                spreadRadius: 2,
+                offset: state.baseShadowOffset,
+              ),
               child: RecursiveHandShadow(
                 size: _kChildHandSize,
                 angleRadians: state.hourRadians,
-                ringShadows: [
-                  RingShadow(
-                    strokeWidth: strokeWidth,
-                    color: colorData.colors.hourRingShadow,
-                    blurRadius: 2,
-                    spreadRadius: 2,
-                    offset: state.hourShadowOffset,
-                  )
-                ],
+                ringShadow: RingShadow(
+                  strokeWidth: strokeWidth,
+                  color: colorData.colors.hourRingShadow,
+                  blurRadius: 2,
+                  spreadRadius: 2,
+                  offset: state.hourShadowOffset,
+                ),
                 child: RecursiveHandShadow(
                   size: _kChildHandSize,
                   angleRadians: state.minuteRadians,
-                  ringShadows: [
-                    RingShadow(
-                      strokeWidth: strokeWidth,
-                      color: colorData.colors.minuteRingShadow,
-                      blurRadius: 2,
-                      spreadRadius: 2,
-                      offset: state.minuteShadowOffset,
-                    ),
-                  ],
+                  ringShadow: RingShadow(
+                    strokeWidth: strokeWidth,
+                    color: colorData.colors.minuteRingShadow,
+                    blurRadius: 2,
+                    spreadRadius: 2,
+                    offset: state.minuteShadowOffset,
+                  ),
                   child: RecursiveHandShadow(
                     size: _kChildHandSize,
                     angleRadians: state.secondRadians,
-                    ringShadows: [
-                      RingShadow(
-                        strokeWidth: strokeWidth,
-                        color: colorData.colors.secondRingShadow,
-                        blurRadius: 2,
-                        spreadRadius: 2,
-                        offset: state.secondShadowOffset,
-                      ),
-                    ],
+                    ringShadow: RingShadow(
+                      strokeWidth: strokeWidth,
+                      color: colorData.colors.secondRingShadow,
+                      blurRadius: 2,
+                      spreadRadius: 2,
+                      offset: state.secondShadowOffset,
+                    ),
                   ),
                 ),
               ),

@@ -46,6 +46,7 @@ class RecursiveHand extends Hand {
         size: size,
         scaleAlignment: Alignment.topCenter,
         child: Stack(
+          alignment: Alignment.center,
           children: <Widget>[
             RingPointer(
               strokeWidth: strokeWidth,

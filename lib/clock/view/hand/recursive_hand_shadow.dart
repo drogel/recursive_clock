@@ -6,7 +6,7 @@ import 'package:recursive_clock/clock/view/hand/ring_shadow_paint.dart';
 
 class RecursiveHandShadow extends Hand {
   const RecursiveHandShadow({
-    @required this.ringShadows,
+    @required this.ringShadow,
     double angleRadians = 0,
     double size = 1,
     this.child,
@@ -16,7 +16,7 @@ class RecursiveHandShadow extends Hand {
         );
 
   final Hand child;
-  final List<RingShadow> ringShadows;
+  final RingShadow ringShadow;
 
   @override
   Widget build(BuildContext context) => HandTransform(
@@ -26,7 +26,7 @@ class RecursiveHandShadow extends Hand {
         child: Stack(
           alignment: Alignment.center,
           children: <Widget>[
-            RingShadowPaint(ringShadows: ringShadows),
+            RingShadowPaint(ringShadow: ringShadow),
             if (child != null) child,
           ],
         ),

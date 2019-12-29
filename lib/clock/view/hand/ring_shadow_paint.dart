@@ -7,20 +7,20 @@ const double _kStrokeWidth = 1;
 
 class RingShadowPaint extends StatelessWidget {
   const RingShadowPaint({
-    @required this.ringShadows,
+    @required this.ringShadow,
     this.strokeWidth = _kStrokeWidth,
-  })  : assert(ringShadows != null),
+  })  : assert(ringShadow != null),
         assert(strokeWidth != null);
 
   final double strokeWidth;
-  final List<RingShadow> ringShadows;
+  final RingShadow ringShadow;
 
   @override
   Widget build(BuildContext context) => LayoutBuilder(
         builder: (_, constraints) => CustomPaint(
           painter: _RingShadowPainter(
             height: constraints.maxHeight,
-            shadows: ringShadows,
+            shadow: ringShadow,
           ),
         ),
       );
@@ -29,12 +29,12 @@ class RingShadowPaint extends StatelessWidget {
 class _RingShadowPainter extends CustomPainter {
   const _RingShadowPainter({
     @required this.height,
-    @required this.shadows,
-  })  : assert(shadows != null),
+    @required this.shadow,
+  })  : assert(shadow != null),
         assert(height != null);
 
   final double height;
-  final List<RingShadow> shadows;
+  final RingShadow shadow;
 
   Offset _shift({@required Offset offset, @required double byPixels}) =>
       offset.translate(
@@ -44,17 +44,15 @@ class _RingShadowPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    for (final shadow in shadows) {
-      final radius = (height - shadow.strokeWidth) / 2;
-      canvas.drawCircle(
-        _shift(offset: shadow.offset, byPixels: shadow.spreadRadius),
-        radius + shadow.spreadRadius,
-        shadow.toPaint(),
-      );
-    }
+    final radius = (height - shadow.strokeWidth) / 2;
+    canvas.drawCircle(
+      _shift(offset: shadow.offset, byPixels: shadow.spreadRadius),
+      radius + shadow.spreadRadius,
+      shadow.toPaint(),
+    );
   }
 
   @override
   bool shouldRepaint(_RingShadowPainter oldDelegate) =>
-      oldDelegate.height != height || oldDelegate.shadows != shadows;
+      oldDelegate.height != height || oldDelegate.shadow != shadow;
 }
