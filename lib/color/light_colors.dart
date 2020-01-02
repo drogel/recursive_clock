@@ -1,40 +1,41 @@
 import 'dart:ui';
 
+import 'package:recursive_clock/color/base_colors.dart' as base_colors;
 import 'package:recursive_clock/color/color_scheme.dart';
 
-const _kRingOpacity = 0.8;
-const _kShadowOpacity = 0.25;
+const _kRingOpacity = 0.85;
+const _kShadowOpacity = 0.13;
 
 class LightColors implements RecursiveClockColorScheme {
   const LightColors();
 
   @override
-  Color get baseRing => const Color.fromRGBO(66, 133, 244, _kRingOpacity);
+  Color get baseRing => base_colors.googleBlue.withOpacity(_kRingOpacity);
 
   @override
   Color get baseRingShadow =>
-      const Color.fromRGBO(160, 195, 255, _kShadowOpacity);
+      base_colors.googleBlue.withOpacity(_kShadowOpacity);
 
   @override
-  Color get hourRing => const Color.fromRGBO(219, 68, 55, _kRingOpacity);
+  Color get hourRing => base_colors.googleRed.withOpacity(_kRingOpacity);
 
   @override
   Color get hourRingShadow =>
-      const Color.fromRGBO(237, 157, 151, _kShadowOpacity);
+      base_colors.googleRed.withOpacity(_kShadowOpacity);
 
   @override
-  Color get minuteRing => const Color.fromRGBO(244, 180, 0, _kRingOpacity);
+  Color get minuteRing => base_colors.googleYellow.withOpacity(_kRingOpacity);
 
   @override
   Color get minuteRingShadow =>
-      const Color.fromRGBO(255, 225, 104, _kShadowOpacity);
+      base_colors.googleYellow.withOpacity(_kShadowOpacity);
 
   @override
-  Color get secondRing => const Color.fromRGBO(15, 157, 88, _kRingOpacity);
+  Color get secondRing => base_colors.googleGreen.withOpacity(_kRingOpacity);
 
   @override
   Color get secondRingShadow =>
-      const Color.fromRGBO(123, 207, 169, _kShadowOpacity);
+      base_colors.googleBlue.withOpacity(_kShadowOpacity);
 
   @override
   Color get text => const Color.fromRGBO(102, 102, 102, 1);
