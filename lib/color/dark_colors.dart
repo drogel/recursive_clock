@@ -38,5 +38,5 @@ class DarkColors implements RecursiveClockColorScheme {
       base_colors.googleBlue.withOpacity(_kShadowOpacity);
 
   @override
-  Color get text => const Color.fromRGBO(204, 204, 204, 1);
+  Color get text => base_colors.googleLightGrey;
 }
