@@ -27,13 +27,18 @@ class InfoViewModel {
 
   void _updateState() {
     final newState = InfoState(
-      temperature: _model.temperatureString,
+      temperature: _model.temperature.toStringAsFixed(0),
+      shortTemperatureUnit: _model.unitString,
+      temperatureUnit: _convertTemperatureUnit(_model.unit),
       temperatureRange: '(${_model.low} - ${_model.highString})',
       condition: _capitalize(_model.weatherString),
       location: _model.location,
     );
     _stateController.sink.add(newState);
   }
+
+  String _convertTemperatureUnit(TemperatureUnit temperatureUnit) =>
+      temperatureUnit == TemperatureUnit.celsius ? "Celsius" : "Fahrenheit";
 
   String _capitalize(String string) {
     if (string.isEmpty) {
