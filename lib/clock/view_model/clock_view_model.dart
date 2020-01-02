@@ -3,6 +3,7 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/foundation.dart';
+import 'package:intl/intl.dart';
 import 'package:recursive_clock/clock/model/time_model.dart';
 import 'package:recursive_clock/clock/view_model/clock_state.dart';
 import 'package:vector_math/vector_math_64.dart' show radians;
@@ -40,6 +41,8 @@ class ClockViewModel {
   ClockState get initialData => _convertToClockState(_time.now());
 
   ClockState _convertToClockState(DateTime time) {
+    final readableTime = DateFormat.Hms().format(_time.now());
+
     final hourRadians = time.hour * _radiansPerHour +
         (time.minute / 60) * _radiansPerHour +
         (time.second / 3600) * _radiansPerHour +
@@ -59,6 +62,7 @@ class ClockViewModel {
     final secondShadowOffset = _computeDesiredShadowOffset(secondRadians);
 
     return ClockState(
+      readableTime: readableTime,
       hourRadians: recursiveHourRadians,
       minuteRadians: recursiveMinuteRadians,
       secondRadians: recursiveSecondRadians,

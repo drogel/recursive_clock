@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:recursive_clock/clock/inherited/clock_data.dart';
 import 'package:recursive_clock/clock/view/recursive_hand/recursive_hand.dart';
 import 'package:recursive_clock/clock/view/hand/hand_decoration.dart';
@@ -98,8 +99,8 @@ class RecursiveClock extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Padding(
-    padding: const EdgeInsets.only(left: 4, right: 4, bottom: 12),
-    child: LayoutBuilder(
+        padding: const EdgeInsets.only(left: 4, right: 4, bottom: 12),
+        child: LayoutBuilder(
           builder: (context, constraints) {
             final colors = ColorData.of(context).colors;
             final state = ClockData.of(context).clockState;
@@ -112,15 +113,21 @@ class RecursiveClock extends StatelessWidget {
                   colors: colors,
                   state: state,
                 ),
-                _buildHands(
-                  context,
-                  strokeWidth: strokeWidth,
-                  colors: colors,
-                  state: state,
+                Semantics.fromProperties(
+                  properties: SemanticsProperties(
+                    label: "The time is ${state.readableTime}",
+                    value: state.readableTime,
+                  ),
+                  child: _buildHands(
+                    context,
+                    strokeWidth: strokeWidth,
+                    colors: colors,
+                    state: state,
+                  ),
                 ),
               ],
             );
           },
         ),
-  );
+      );
 }
