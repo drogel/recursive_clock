@@ -97,27 +97,30 @@ class RecursiveClock extends StatelessWidget {
       );
 
   @override
-  Widget build(BuildContext context) => LayoutBuilder(
-        builder: (context, constraints) {
-          final colors = ColorData.of(context).colors;
-          final state = ClockData.of(context).clockState;
-          final strokeWidth = _kStrokeWidthFraction * constraints.maxHeight;
-          return Stack(
-            children: <Widget>[
-              _buildShadows(
-                context,
-                strokeWidth: strokeWidth,
-                colors: colors,
-                state: state,
-              ),
-              _buildHands(
-                context,
-                strokeWidth: strokeWidth,
-                colors: colors,
-                state: state,
-              ),
-            ],
-          );
-        },
-      );
+  Widget build(BuildContext context) => Padding(
+    padding: const EdgeInsets.only(left: 4, right: 4, bottom: 12),
+    child: LayoutBuilder(
+          builder: (context, constraints) {
+            final colors = ColorData.of(context).colors;
+            final state = ClockData.of(context).clockState;
+            final strokeWidth = _kStrokeWidthFraction * constraints.maxHeight;
+            return Stack(
+              children: <Widget>[
+                _buildShadows(
+                  context,
+                  strokeWidth: strokeWidth,
+                  colors: colors,
+                  state: state,
+                ),
+                _buildHands(
+                  context,
+                  strokeWidth: strokeWidth,
+                  colors: colors,
+                  state: state,
+                ),
+              ],
+            );
+          },
+        ),
+  );
 }
