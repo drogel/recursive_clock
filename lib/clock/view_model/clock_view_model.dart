@@ -62,7 +62,7 @@ class ClockViewModel {
     final secondShadowOffset = _computeDesiredShadowOffset(secondRadians);
 
     return ClockState(
-      readableTime: readableTime,
+      readTime: readableTime,
       hourRadians: recursiveHourRadians,
       minuteRadians: recursiveMinuteRadians,
       secondRadians: recursiveSecondRadians,
