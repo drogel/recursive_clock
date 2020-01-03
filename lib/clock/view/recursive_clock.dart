@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:recursive_clock/clock/inherited/clock_data.dart';
 import 'package:recursive_clock/clock/view/recursive_hand/recursive_hand.dart';
 import 'package:recursive_clock/clock/view/hand/hand_decoration.dart';
@@ -110,11 +111,18 @@ class RecursiveClock extends StatelessWidget {
                 colors: colors,
                 state: state,
               ),
-              _buildHands(
-                context,
-                strokeWidth: strokeWidth,
-                colors: colors,
-                state: state,
+              Semantics.fromProperties(
+                properties: SemanticsProperties(
+                  label:
+                      "It's ${state.readTime} according to the Recursive Clock",
+                  value: state.readTime,
+                ),
+                child: _buildHands(
+                  context,
+                  strokeWidth: strokeWidth,
+                  colors: colors,
+                  state: state,
+                ),
               ),
             ],
           );

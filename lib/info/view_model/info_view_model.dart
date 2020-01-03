@@ -27,7 +27,8 @@ class InfoViewModel {
 
   void _updateState() {
     final newState = InfoState(
-      temperature: _model.temperatureString,
+      temperature: _model.temperature.toStringAsFixed(0),
+      temperatureUnit: _model.unitString,
       temperatureRange: '(${_model.low} - ${_model.highString})',
       condition: _capitalize(_model.weatherString),
       location: _model.location,
