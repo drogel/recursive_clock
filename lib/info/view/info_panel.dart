@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/semantics.dart';
 import 'package:recursive_clock/info/inherited/info_data.dart';
 import 'package:recursive_clock/color/inherited/color_data.dart';
 
@@ -12,33 +11,26 @@ class InfoPanel extends StatelessWidget {
     return DefaultTextStyle(
       style: TextStyle(
         color: ColorData.of(context).colors.text,
-        fontSize: 20,
+        fontSize: 16,
         fontFamily: "Montserrat",
       ),
-      child: Semantics.fromProperties(
-        properties: SemanticsProperties(
-          label: """It's ${infoState.temperature} ${infoState.temperatureUnit} 
-              degrees in ${infoState.location}. 
-              The weather is ${infoState.condition}""",
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "${infoState.temperature}${infoState.shortTemperatureUnit}",
-              style: TextStyle(
-                fontWeight: FontWeight.w100,
-                fontSize: 72,
-              ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            "${infoState.temperature}${infoState.temperatureUnit}",
+            style: TextStyle(
+              fontWeight: FontWeight.w100,
+              fontSize: 64,
             ),
-            Text(infoState.location),
-            Text(
-              infoState.condition,
-              style: TextStyle(fontWeight: FontWeight.w700),
-            ),
-          ],
-        ),
+          ),
+          Text(infoState.location),
+          Text(
+            infoState.condition,
+            style: TextStyle(fontWeight: FontWeight.w700),
+          ),
+        ],
       ),
     );
   }
