@@ -13,6 +13,7 @@ const double kGoldenRatio = 1.61803398875;
 const double _kChildHandSize = 1 / kGoldenRatio;
 const double _kStrokeWidthFraction = (1 - 1 / kGoldenRatio) / 2;
 
+/// A widget that nests four [RecursiveHand]s to draw a clock.
 class RecursiveClock extends StatelessWidget {
   const RecursiveClock();
 
@@ -112,11 +113,7 @@ class RecursiveClock extends StatelessWidget {
                 state: state,
               ),
               Semantics.fromProperties(
-                properties: SemanticsProperties(
-                  label:
-                      "It's ${state.readTime} according to the Recursive Clock",
-                  value: state.readTime,
-                ),
+                properties: SemanticsProperties(value: state.readTime),
                 child: _buildHands(
                   context,
                   strokeWidth: strokeWidth,

@@ -4,6 +4,7 @@ import 'package:recursive_clock/color/color_scheme.dart';
 import 'package:recursive_clock/color/dark_colors.dart';
 import 'package:recursive_clock/color/light_colors.dart';
 
+/// A widget that handles colors updates from [Theme.brightness].
 class ColorUpdater extends StatelessWidget {
   const ColorUpdater({Key key, @required this.child})
       : assert(child != null),

@@ -6,6 +6,7 @@ import 'package:recursive_clock/color/color_scheme.dart';
 const _kRingOpacity = 0.85;
 const _kShadowOpacity = 0.13;
 
+/// An implementation of [RecursiveClockColorScheme] for light mode colors.
 class LightColors implements RecursiveClockColorScheme {
   const LightColors();
 

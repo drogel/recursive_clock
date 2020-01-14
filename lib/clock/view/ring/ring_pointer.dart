@@ -5,7 +5,7 @@ import 'package:recursive_clock/clock/view/ring/ring.dart';
 import 'package:recursive_clock/clock/view/ring/ring_paint.dart';
 import 'package:recursive_clock/clock/view/recursive_clock.dart';
 
-/// A widget that stacks a [RingPaint] and an [Indicator] for a static clock hand.
+/// Stacks a [RingPaint] and an [Indicator] to draw a static clock hand.
 class RingPointer extends Ring {
   /// Creates an immutable [RingPointer].
   ///
