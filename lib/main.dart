@@ -6,7 +6,7 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:recursive_clock/helper/customizer.dart';
+import 'package:flutter_clock_helper/customizer.dart';
 import 'package:recursive_clock/recursive_clock_app.dart';
 
 void main() {
