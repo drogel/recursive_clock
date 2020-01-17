@@ -4,6 +4,7 @@ import 'package:recursive_clock/clock/view/hand/hand.dart';
 import 'package:recursive_clock/clock/view/shadow/ring_shadow.dart';
 import 'package:recursive_clock/clock/view/shadow/ring_shadow_paint.dart';
 
+/// Draws a [RingShadowPaint] that can have another child [Hand] in it.
 class RecursiveHandShadow extends Hand {
   const RecursiveHandShadow({
     @required this.ringShadow,

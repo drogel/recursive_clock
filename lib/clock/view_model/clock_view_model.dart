@@ -5,6 +5,7 @@ import 'dart:ui';
 import 'package:flutter/foundation.dart';
 import 'package:intl/intl.dart';
 import 'package:recursive_clock/clock/model/time_model.dart';
+import 'package:recursive_clock/clock/view/recursive_clock.dart';
 import 'package:recursive_clock/clock/view_model/clock_state.dart';
 import 'package:vector_math/vector_math_64.dart' show radians;
 
@@ -15,6 +16,7 @@ final _radiansPerTick = _kDebugTimeSpeedFactor * radians(360 / 60);
 final _radiansPerMillisecond = _kDebugTimeSpeedFactor * radians(360 / 60000);
 final _radiansPerHour = _kDebugTimeSpeedFactor * radians(360 / 12);
 
+/// Translates the time given by a [TimeModel] into angles for a [RecursiveClock]'s hands.
 class ClockViewModel {
   ClockViewModel({
     @required StreamController<ClockState> stateController,

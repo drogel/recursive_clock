@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recursive_clock/clock/view/hand/hand.dart';
 
+/// Forces its child to fit in a square, then rotates it and scales it.
 class HandTransform extends Hand {
   const HandTransform({
     double angleRadians = 0,

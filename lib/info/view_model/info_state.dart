@@ -1,3 +1,4 @@
+/// Holds the information about the temperature, weather condition and location.
 class InfoState {
   InfoState({
     this.temperature = "",

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recursive_clock/clock/view/ring/ring.dart';
 
+/// A widget that draws a [Ring] of a given [color].
 class RingPaint extends Ring {
   const RingPaint({
     this.color = Colors.black,

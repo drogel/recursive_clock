@@ -14,6 +14,7 @@ import 'package:recursive_clock/info/view/info_panel.dart';
 import 'package:recursive_clock/info/view_model/info_state.dart';
 import 'package:recursive_clock/info/view_model/info_view_model.dart';
 
+/// A widget that handles dependency injection for the Recursive Clock app.
 class RecursiveClockApp extends StatelessWidget {
   const RecursiveClockApp(this._model);
 

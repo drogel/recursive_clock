@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+/// A description of a shadow cast by a [Ring].
 class RingShadow extends BoxShadow {
   const RingShadow({
     @required this.strokeWidth,

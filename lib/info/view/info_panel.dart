@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:recursive_clock/info/inherited/info_data.dart';
 import 'package:recursive_clock/color/inherited/color_data.dart';
 
+/// Displays information about the temperature, weather condition and location.
 class InfoPanel extends StatelessWidget {
   const InfoPanel();
 

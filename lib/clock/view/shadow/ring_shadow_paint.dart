@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:recursive_clock/clock/view/ring/ring.dart';
 import 'package:recursive_clock/clock/view/shadow/ring_shadow.dart';
 
+/// Draws the shadow that corresponds to a [RingShadow] description.
 class RingShadowPaint extends Ring {
   const RingShadowPaint({
     @required this.ringShadow,
