@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:recursive_clock/clock/view/recursive_clock.dart';
 import 'package:recursive_clock/color/color_scheme.dart';
 
-/// Holds information about the colors and [Brightness] of the [RecursiveClock].
+/// Propagates data about the colors and [Brightness] of the [RecursiveClock].
 class ColorData extends InheritedWidget {
   const ColorData({
     @required Brightness brightness,

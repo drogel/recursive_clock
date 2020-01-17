@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:recursive_clock/helper/model.dart';
 import 'package:recursive_clock/info/view_model/info_state.dart';
 
+/// Translates the information given by a [ClockModel] into readable strings.
 class InfoViewModel {
   InfoViewModel({
     @required ClockModel model,

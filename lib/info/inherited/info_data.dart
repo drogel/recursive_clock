@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recursive_clock/info/view_model/info_state.dart';
 
+/// An [InheritedWidget] that propagates information about a given [InfoState].
 class InfoData extends InheritedWidget {
   const InfoData({
     @required this.infoState,

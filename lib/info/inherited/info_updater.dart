@@ -3,6 +3,7 @@ import 'package:recursive_clock/info/inherited/info_data.dart';
 import 'package:recursive_clock/info/view_model/info_state.dart';
 import 'package:recursive_clock/info/view_model/info_view_model.dart';
 
+/// Listens to an [InfoViewModel]'s [Stream], updating the widget tree when [InfoState] changes.
 class InfoUpdater extends StatefulWidget {
   const InfoUpdater(
     this._viewModel, {

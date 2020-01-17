@@ -1,7 +1,9 @@
 import 'dart:ui';
 
 import 'package:flutter/foundation.dart';
+import 'package:recursive_clock/clock/view/recursive_clock.dart';
 
+/// Holds the information about the angles of a [RecursiveClock]'s hands.
 class ClockState {
   const ClockState({
     @required this.readTime,
