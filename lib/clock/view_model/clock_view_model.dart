@@ -23,7 +23,7 @@ final _radiansPerTick = _kDebugTimeSpeed * radians(360 / _kSecondsInMinute);
 final _radiansPerMs = _kDebugTimeSpeed * radians(360 / _kMillisecondsInMinute);
 final _radiansPerHour = _kDebugTimeSpeed * radians(360 / 12);
 
-/// Translates the time given by a [TimeModel] into angles for a [RecursiveClock]'s hands.
+/// Translates a [TimeModel]'s time into angles for a [RecursiveClock] hands.
 class ClockViewModel {
   ClockViewModel({
     @required StreamController<ClockState> stateController,

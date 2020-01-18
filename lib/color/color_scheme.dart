@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recursive_clock/clock/view/recursive_clock.dart';
 
 /// An interface for the color scheme used across the [RecursiveClock].
 abstract class RecursiveClockColorScheme {

@@ -3,12 +3,12 @@ import 'package:recursive_clock/clock/inherited/clock_data.dart';
 import 'package:recursive_clock/clock/view_model/clock_state.dart';
 import 'package:recursive_clock/clock/view_model/clock_view_model.dart';
 
-/// Listens to a [ClockViewModel]'s [Stream], updating the widget tree when [ClockState] changes.
+/// Updates [child] when [ClockState] from [ClockViewModel.stateStream] changes.
 class ClockUpdater extends StatefulWidget {
   const ClockUpdater(
     this._viewModel, {
-    Key key,
     @required this.child,
+    Key key,
   })  : assert(child != null),
         assert(_viewModel != null),
         super(key: key);
