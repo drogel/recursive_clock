@@ -30,7 +30,7 @@ class RecursiveClockApp extends StatelessWidget {
           child: ClockUpdater(
             ClockViewModel(
               stateController: StreamController<ClockState>(),
-              model: Time(),
+              model: const Time(),
             ),
             child: const ClockInfoLayout(
               infoPanel: InfoPanel(),

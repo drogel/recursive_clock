@@ -16,5 +16,6 @@ class InfoData extends InheritedWidget {
       context.dependOnInheritedWidgetOfExactType(aspect: InfoData);
 
   @override
-  bool updateShouldNotify(InfoData oldWidget) => oldWidget.infoState != infoState;
+  bool updateShouldNotify(InfoData oldWidget) =>
+      oldWidget.infoState != infoState;
 }

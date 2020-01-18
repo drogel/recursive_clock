@@ -9,14 +9,21 @@ import 'package:recursive_clock/clock/view/recursive_clock.dart';
 import 'package:recursive_clock/clock/view_model/clock_state.dart';
 import 'package:vector_math/vector_math_64.dart' show radians;
 
-const _kDebugTimeSpeedFactor = 1;
+const _kDebugTimeSpeed = 1;
 const _kDefaultShadowsOffset = Offset(16, 16);
 
-final _radiansPerTick = _kDebugTimeSpeedFactor * radians(360 / 60);
-final _radiansPerMillisecond = _kDebugTimeSpeedFactor * radians(360 / 60000);
-final _radiansPerHour = _kDebugTimeSpeedFactor * radians(360 / 12);
+const _kMinutesInHour = 60;
+const _kSecondsInMinute = _kMinutesInHour;
+const _kSecondsInHour = _kSecondsInMinute * _kMinutesInHour;
+const _kMillisecondsInSecond = 1000;
+const _kMillisecondsInMinute = _kMillisecondsInSecond * _kSecondsInMinute;
+const _kMillisecondsInHour = _kMillisecondsInMinute * _kMinutesInHour;
 
-/// Translates the time given by a [TimeModel] into angles for a [RecursiveClock]'s hands.
+final _radiansPerTick = _kDebugTimeSpeed * radians(360 / _kSecondsInMinute);
+final _radiansPerMs = _kDebugTimeSpeed * radians(360 / _kMillisecondsInMinute);
+final _radiansPerHour = _kDebugTimeSpeed * radians(360 / 12);
+
+/// Translates a [TimeModel]'s time into angles for a [RecursiveClock] hands.
 class ClockViewModel {
   ClockViewModel({
     @required StreamController<ClockState> stateController,
@@ -46,14 +53,14 @@ class ClockViewModel {
     final readableTime = DateFormat.Hms().format(_time.now());
 
     final hourRadians = time.hour * _radiansPerHour +
-        (time.minute / 60) * _radiansPerHour +
-        (time.second / 3600) * _radiansPerHour +
-        (time.millisecond / 3600000) * _radiansPerHour;
+        (time.minute / _kMinutesInHour) * _radiansPerHour +
+        (time.second / _kSecondsInHour) * _radiansPerHour +
+        (time.millisecond / _kMillisecondsInHour) * _radiansPerHour;
     final minuteRadians = time.minute * _radiansPerTick +
-        (time.second / 60) * _radiansPerTick +
-        (time.millisecond / 60000) * _radiansPerTick;
-    final secondRadians = time.millisecond * _radiansPerMillisecond +
-        time.second * _radiansPerTick;
+        (time.second / _kSecondsInMinute) * _radiansPerTick +
+        (time.millisecond / _kMillisecondsInMinute) * _radiansPerTick;
+    final secondRadians =
+        time.millisecond * _radiansPerMs + time.second * _radiansPerTick;
 
     final recursiveHourRadians = hourRadians;
     final recursiveMinuteRadians = minuteRadians - hourRadians;

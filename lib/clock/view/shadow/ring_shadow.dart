@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:recursive_clock/clock/view/ring/ring.dart';
 
 /// A description of a shadow cast by a [Ring].
 class RingShadow extends BoxShadow {
