@@ -1,4 +1,4 @@
-![Header](/header.png)
+![Header](/images/header.png)
 
 
 A clock face app built with Flutter. It's a clock hand, inside a clock hand, inside a clock hand!
@@ -8,10 +8,12 @@ A clock face app built with Flutter. It's a clock hand, inside a clock hand, ins
 
 This app is an analog clock face built for the [Flutter Clock contest](https://flutter.dev/clock). Its hands are rings nested inside each other. It has a light theme and a dark theme, and displays temperature, weather and location data.
 
-The intersection of the red ring with the blue one indicates the hour. The intersection of the yellow ring with the red one indicates the minutes. The intersection of the green ring with the yellow one indicates the seconds. Can you tell what time is it?
+The intersection of the red ring with the blue one indicates the hour. The intersection of the yellow ring with the red one indicates the minutes. The intersection of the green ring with the yellow one indicates the seconds.
 
-![Light theme](/light.png)
-![Dark theme](/dark.png)
+Can you tell what time is it?
+
+![Light theme](/images/light.png)
+![Dark theme](/images/dark.png)
 
 ## Getting Started
 
