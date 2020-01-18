@@ -15,7 +15,7 @@ Can you tell what time is it?
 ![Light theme](/images/light.png)
 ![Dark theme](/images/dark.png)
 
-### Recursive Clock app architecture
+## Recursive Clock app architecture
 
 The Recursive Clock is built around a MVVM-like architecture, as described by the following diagram.
 
