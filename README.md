@@ -3,6 +3,7 @@
 
 A clock face app built with Flutter. It's a clock hand, inside a clock hand, inside a clock hand!
 
+As of Flutter's 1.13.6 beta release, Recursive Clock also runs on web browsers! [Recursive Clock on github.io](https://drogel.github.io/recursive_clock_web/#/)
 
 ## About Recursive Clock
 
