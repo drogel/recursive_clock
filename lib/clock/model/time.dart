@@ -7,5 +7,3 @@ class Time implements TimeModel {
   @override
   DateTime now() => DateTime.now();
 }
-
-
