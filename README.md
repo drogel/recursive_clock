@@ -15,6 +15,12 @@ Can you tell what time is it?
 ![Light theme](/images/light.png)
 ![Dark theme](/images/dark.png)
 
+### Recursive Clock app architecture
+
+The Recursive Clock is built around a MVVM-like architecture, as described by the following diagram.
+
+![Diagram](/images/diagram.png)
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine.
@@ -39,4 +45,4 @@ These instructions will get you a copy of the project up and running on your loc
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
